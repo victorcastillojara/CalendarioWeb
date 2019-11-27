@@ -63,8 +63,6 @@ $respuesta=$sentenciaSQL->execute(array(
 
 echo json_encode($respuesta);
 
-
-    //echo "instruccion modificar";
     break;
 
     default:
