@@ -1,6 +1,7 @@
 <?php
 session_start();
-?>
+if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
+{?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -272,3 +273,12 @@ session_start();
 </body>
 
 </html>
+<?php
+}else
+{
+header("Location: index.html");
+
+exit;
+}
+
+?>

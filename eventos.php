@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 header('Content-Type: application/json');
 
@@ -36,7 +37,7 @@ switch($accion){
     }
 
     echo json_encode($respuesta);
-    //echo "instruccion eliminar";
+
     break;
 
     case 'modificar':
