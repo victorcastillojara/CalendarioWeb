@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 {?>
@@ -183,6 +184,25 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
               <label>Titulo</label>
               <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evento">
             </div>
+
+            <div>
+            <?php
+                include "conexion.php";
+
+                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+                ?>
+                <select>
+                    <option value="0">Seleccione curso:</option>
+                    <?php
+                      $query = $mysqli -> query ("SELECT * FROM usuario");
+                      while ($valores = mysqli_fetch_array($query)) {
+                        echo '<option value="'.$valores['id'].'">'.$valores['correo'].'</option>';
+                      }
+                    ?>
+                </select>
+            </div>
+
             <div class="form-group col-md-4">
               <label>Hora del evento</label>
               <input type="time" id="txtHora" value="10:30" name="txtHora" class="form-control">
