@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2019 a las 22:20:05
+-- Tiempo de generación: 26-11-2019 a las 01:15:47
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -71,6 +71,7 @@ CREATE TABLE `docente` (
   `telefono` int(11) NOT NULL,
   `direccion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -114,17 +115,6 @@ CREATE TABLE `ramo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
---
-
-CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
-  `rol` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -132,7 +122,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_rol` int(11) NOT NULL
+  `tipo_usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -188,17 +178,10 @@ ALTER TABLE `ramo`
   ADD PRIMARY KEY (`id_ramo`);
 
 --
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id_rol`);
-
---
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `fk_usuario_roles` (`id_rol`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -241,12 +224,6 @@ ALTER TABLE `ramo`
   MODIFY `id_ramo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -277,8 +254,7 @@ ALTER TABLE `horario`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `fk_usuario_docente` FOREIGN KEY (`id_usuario`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_usuario_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_usuario_docente` FOREIGN KEY (`id_usuario`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
