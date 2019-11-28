@@ -1,7 +1,15 @@
 <?php
+
 session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
-{?>
+
+if(!isset($_SESSION['rol'])){
+    header('location:login.php');
+}else{
+    if($_SESSION['rol']!=1){
+        header('location:login.php');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,11 +80,5 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 </html>
 
 <?php
-}else
-{
-header("Location: index.html");
-
-exit;
-}
 
 ?>

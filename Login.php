@@ -1,6 +1,6 @@
 <?php
 
-include_once 'conexion.php';
+include_once 'database.php';
 
 session_start();
 
@@ -9,29 +9,40 @@ if(isset($_GET['cerrar_sesion'])){
     session_destroy();
 }
 
-if(isset($_SESSION['tipo_usuario'])){
-    switch($_SESSION['tipo_usuario']){
-        case 'admin':
-            header('location: menu-admin.html');
+if(isset($_SESSION['rol'])){
+    switch($_SESSION['rol']){
+        case '1':
+            header('location: menu-admin.php');
         break;
 
-        case 'docente':
-            header('location: menu-usuario.html');
+        case '2':
+            header('location: menu-usuario.php');
         break;
     }
 }
 
-if(isset($_POST['usuario']) && isset($_POST['contra'])){
-    $usuario=$_POST['usuario'];
-    $pass=$_POST['contra'];
+if(isset($_POST['correo']) && isset($_POST['password'])){
+    $correo=$_POST['correo'];
+    $password=$_POST['password'];
 
-    $query=$conn->connect()->prepare('SELECT * FROM usuario WHERE correo=:usuario AND password=:pass');
-    $query->execute(['usuario'=>$usuario, 'password'=>$pass]);
+    $db=new Database();
+    $query=$db->connect()->prepare('SELECT * FROM usuario WHERE correo=:correo AND password=:password');
+    $query->execute(['correo'=>$correo, 'password'=>$password]);
 
     $row=$query->fetch(PDO::FETCH_NUM);
 
     if($row==true){
-
+        $rol=$row[3];
+        $_SESSION['rol']=$rol;
+        switch($_SESSION['rol']){
+            case '1':
+                header('location: menu-admin.php');
+            break;
+    
+            case '2':
+                header('location: menu-usuario.php');
+            break;
+        }
     }else{
         echo"Usuario y/o contraseña incorrecto(s)";
     }
@@ -61,12 +72,12 @@ if(isset($_POST['usuario']) && isset($_POST['contra'])){
 
             <div class="texto">
                     <i class="fas fa-user"></i>
-                <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <input type="text" name="correo" id="correo" placeholder="Usuario">
             </div>
 
             <div class="texto">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="contra" id="contra" placeholder="Contraseña">
+                <input type="password" name="password" id="password" placeholder="Contraseña">
             </div>
 
             <input type="submit" class="btn" value="Iniciar sesion">
