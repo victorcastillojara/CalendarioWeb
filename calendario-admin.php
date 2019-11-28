@@ -110,7 +110,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
           $("#ModalEventos").modal();
         },
 
-        events: 'http://localhost/calendario/eventos.php',
+        events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
 
 
         eventClick: function (calEvent, jsEvent, view) {

@@ -1,7 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
-{?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +99,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
           $("#ModalEventos").modal();
         },
 
-        events: 'http://localhost/calendario/eventos.php',
+        events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
 
 
         eventClick: function (calEvent, jsEvent, view) {
@@ -273,12 +270,3 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 </body>
 
 </html>
-<?php
-}else
-{
-header("Location: index.html");
-
-exit;
-}
-
-?>
