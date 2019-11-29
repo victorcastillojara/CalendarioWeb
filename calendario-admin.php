@@ -48,7 +48,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Horario Profesores</a>
@@ -66,7 +66,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
             </ul>
 
         </div>
-        <a class="nav-link" href="#">cerrar sesion</a>
+        <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
 

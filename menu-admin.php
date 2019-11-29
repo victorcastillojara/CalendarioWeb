@@ -39,7 +39,7 @@ if(!isset($_SESSION['rol'])){
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Horario Profesores</a>
