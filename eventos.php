@@ -9,10 +9,13 @@ $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
 switch($accion){
     case 'agregar':
     //intstrucciones de agregado
-    $SentenciaSQL=$pdo->prepare("INSERT INTO eventos(title,descripcion,color,textColor,start,end)
-    VALUES(:title,:descripcion,:color,:textColor,:start,:end)");
+    $SentenciaSQL=$pdo->prepare("INSERT INTO eventos(usuario,curso,bloque,title,descripcion,color,textColor,start,end)
+    VALUES(:usuario,:curso,:bloque,:title,:descripcion,:color,:textColor,:start,:end)");
 
     $respuesta=$SentenciaSQL->execute(array(
+        "usuario"=>$_POST['usuario'],
+        "curso"=>$_POST['curso'],
+        "bloque"=>$_POST['bloque'],
         "title"=>$_POST['title'],
         "descripcion"=>$_POST['descripcion'],
         "color"=>$_POST['color'],
@@ -44,6 +47,9 @@ switch($accion){
     //intstrucciones de modificar
 
     $sentenciaSQL=$pdo->prepare("UPDATE eventos SET 
+    usuario=:usuario,
+    curso=:curso,
+    bloque=:bloque,
     title=:title,
     descripcion=:descripcion,
     color=:color,
@@ -54,6 +60,9 @@ switch($accion){
 
 $respuesta=$sentenciaSQL->execute(array(
     "ID"=>$_POST['id'],
+    "usuario"=>$_POST['usuario'],
+    "curso"=>$_POST['curso'],
+    "bloque"=>$_POST['bloque'],
     "title"=>$_POST['title'],
     "descripcion"=>$_POST['descripcion'],
     "color"=>$_POST['color'],

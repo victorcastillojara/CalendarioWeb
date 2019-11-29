@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
-{?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,13 +115,15 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
           $('#btnModificar').prop("disabled",false);
           $('#btnEliminar').prop("disabled",false);
 
-          $('#tituloEvento').html(calEvent.title);
+          $('#tituloEvento').html(calEvent.usuario);
 
           $('#txtDescripcion').val(calEvent.descripcion);
 
           $('#txtID').val(calEvent.id);
 
           $('#txtTitulo').val(calEvent.title);
+
+          $('#bloque').val(calEvent.bloque);
 
           $('#txtColor').val(calEvent.color);
 
@@ -144,6 +140,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
         eventDrop: function (calEvent) {
 
           $('#txtID').val(calEvent.id);
+          $('#bloque').val(calEvent.bloque);
           $('#txtTitulo').val(calEvent.title);
           $('#txtColor').val(calEvent.color);
           $('#txtDescripcion').val(calEvent.descripcion);
@@ -178,41 +175,65 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 
           <input type="hidden" id="txtID" name="txtID">
           <input type="hidden" id="txtFecha" name="txtFecha">
+          <input type="hidden" name="usuario" id="usuario" value="<?php $_SESSION['usuario']?>"> 
 
           <div class="form-row">
-            <div class="form-group col-md-8">
-              <label>Titulo</label>
-              <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evento">
-            </div>
 
-            <div>
+          <div class="form-group col-md-5">
             <?php
                 include "conexion.php";
 
                   $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
                 ?>
-                <select>
-                    <option value="0">Seleccione curso:</option>
+                <label for="curso">Seleccione curso</label>
+                <select id="curso" name="curso">
+                <option value="0">Seleccione curso</option>
                     <?php
-                      $query = $mysqli -> query ("SELECT * FROM usuario");
+                      $query = $mysqli -> query ("SELECT * FROM curso");
                       while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['id'].'">'.$valores['correo'].'</option>';
+                        echo '<option value="'.$valores['curso'].' '.$valores['nivel'].'">'.$valores['curso'].' '.$valores['nivel'].'</option>';
                       }
                     ?>
                 </select>
             </div>
 
-            <div class="form-group col-md-4">
-              <label>Hora del evento</label>
+            <div class="form-group col-md-8">
+              <label>Titulo evaluación</label>
+              <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
+            </div>
+            <div class="form-group col-md-8">
+              <label>Hora inicio evaluacion</label>
               <input type="time" id="txtHora" value="10:30" name="txtHora" class="form-control">
+
+            </div>
+
+            <div class="form-group col-md-4">
+              <!--<label>bloque</label>
+              <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
+              <?php
+                include "conexion.php";
+
+                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+                ?>
+                <label for="bloque">Seleccione bloque</label>
+                <select id="bloque" name="boque">
+                <option value="0">Seleccione bloque</option>
+                    <?php
+                      $query = $mysqli -> query ("SELECT * FROM bloque");
+                      while ($valores = mysqli_fetch_array($query)) {
+                        echo '<option value="'.$valores['bloque'].'">'.$valores['bloque'].'</option>';
+                      }
+                    ?>
+                </select>
 
             </div>
 
           </div>
 
           <div class="form-group">
-            <label>Descripcion</label>
+            <label>Descripcion evaluacion</label>
             <textarea name="txtDescripcion" id="txtDescripcion" rows="3" class="form-control"></textarea>
           </div>
           <div form-group>
@@ -253,6 +274,9 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
     function RecolectarDatosGUI() {
       NuevoEvento = {
         id: $('#txtID').val(),
+        usuario:$('#usuario').val(),
+        curso:$('#curso').val(),
+        bloque:$('#bloque').val(),
         title: $('#txtTitulo').val(),
         start: $('#txtFecha').val() + " " + $('#txtHora').val(),
         color: $('#txtColor').val(),
@@ -302,21 +326,3 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 </body>
 
 </html>
-
-
-
-
-
-<?php
-}else
-{
-header("Location: index.html");
-
-exit;
-}
-
-?>
-
-
-
-
