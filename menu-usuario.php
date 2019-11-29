@@ -51,7 +51,7 @@ if(!isset($_SESSION['rol'])){
             </ul>
 
         </div>
-        <a class="nav-link" href="#">cerrar sesion</a>
+        <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
 
