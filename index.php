@@ -34,6 +34,8 @@ if(isset($_POST['correo']) && isset($_POST['password'])){
     if($row==true){
         $rol=$row[3];
         $_SESSION['rol']=$rol;
+        $usu=$row[0];
+        $_SESSION['usu']=$usu;
         switch($_SESSION['rol']){
             case '1':
                 header('location: menu-admin.php');
