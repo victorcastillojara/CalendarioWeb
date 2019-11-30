@@ -85,9 +85,49 @@ if(!isset($_SESSION['rol'])){
         <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
         <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
+        <div class="box-formulario">
 
-            <textarea name="" id="" cols="100" rows="10"></textarea>
+        <h1>Registro de docentes</h1>
+        <!--Crear archivo php VerificarUsuario-->
+        <form action="registro.php" method="post">
+
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="rut" id="rut">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido(s)">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="telefono" id="telefono" placeholder="Telefono">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="direccion" id="direccion" placeholder="Direccion">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="correo" id="correo" placeholder="Correo">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="password" id="password" placeholder="Contraseña">
+            </div>
+            <div class="texto">
+                    <i class="fas fa-user"></i>
+                <input type="text" name="id_usuario" id="id_usuario" placeholder="ID de usuario">
+            </div>
+
+            <input type="submit" class="btn" value="Registrar">
+
+        </form>
+    </div>
         </div>
 
 

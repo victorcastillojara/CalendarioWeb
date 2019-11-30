@@ -1,7 +1,18 @@
 <?php
+
+include_once 'database.php';
+
 session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
-{?>
+
+if(!isset($_SESSION['rol'])){
+    header('location:login.php');
+}else{
+    if($_SESSION['rol']!=1){
+        header('location:login.php');
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,8 +80,25 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
     </nav>
 
     <section>
-        
-   <h1>Bienvenido: <?php echo $_SESSION['usuario'] ?></h1>
+    <?php
+    $usu=$_SESSION['usu'];
+    $db=new Database();
+    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+    $query1->execute(['usu'=>$usu]);
+
+    $row1=$query1->fetch(PDO::FETCH_NUM);
+    $rol1=$row1[0];
+
+    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+    $query2->execute(['rol1'=>$rol1]);
+
+    $row2=$query2->fetch(PDO::FETCH_NUM);
+    $nom=$row2[2];
+    $ape=$row2[3];
+    
+    ?>
+
+        <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
   <div class="container">
     <div class="row">
       <div class="col"></div>
@@ -119,7 +147,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
           $('#btnModificar').prop("disabled",false);
           $('#btnEliminar').prop("disabled",false);
 
-          $('#tituloEvento').html(calEvent.usuario);
+          $('#tituloEvento').html(calEvent.titulo);
 
           $('#txtDescripcion').val(calEvent.descripcion);
 
@@ -191,7 +219,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 
                 ?>
                 <label for="curso">Seleccione curso</label>
-                <select id="curso" name="curso">
+                <select id="curso" name="curso" class="form-control">
                 <option value="0">Seleccione curso</option>
                     <?php
                       $query = $mysqli -> query ("SELECT * FROM curso");
@@ -222,7 +250,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 
                 ?>
                 <label for="bloque">Seleccione bloque</label>
-                <select id="bloque" name="boque">
+                <select id="bloque" name="boque" class="form-control">
                 <option value="0">Seleccione bloque</option>
                     <?php
                       $query = $mysqli -> query ("SELECT * FROM bloque");
@@ -331,9 +359,5 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true)
 
 </html>
 <?php
-}else
-{
-header("Location: index.php");
-exit;
-}
+
 ?>

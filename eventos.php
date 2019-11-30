@@ -6,6 +6,7 @@ header('Content-Type: application/json');
 $pdo=new PDO("mysql:dbname=scejc;host=127.0.0.1","root","");
 
 $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
+
 switch($accion){
     case 'agregar':
     //intstrucciones de agregado

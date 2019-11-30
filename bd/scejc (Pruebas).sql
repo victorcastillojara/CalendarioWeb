@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2019 a las 22:38:44
+-- Tiempo de generación: 29-11-2019 a las 22:57:57
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -33,6 +33,17 @@ CREATE TABLE `bloque` (
   `bloque` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `bloque`
+--
+
+INSERT INTO `bloque` (`id_bloque`, `bloque`) VALUES
+(1, '8:00 a 9:30'),
+(2, '9:30 a 11:15'),
+(3, '11:30 a 12:45'),
+(4, '14:00 a 15:30'),
+(5, '15:45 a 17:00');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +57,14 @@ CREATE TABLE `curso` (
   `cant_alumnos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`id_curso`, `curso`, `nivel`, `cant_alumnos`) VALUES
+(1, 'Primero A', 'Basico', 20),
+(2, 'Primero B', 'Basico', 22);
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +75,17 @@ CREATE TABLE `dia` (
   `id_dia` int(11) NOT NULL,
   `dia` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `dia`
+--
+
+INSERT INTO `dia` (`id_dia`, `dia`) VALUES
+(1, 'Lunes'),
+(2, 'Martes'),
+(3, 'Miercoles'),
+(4, 'Jueves'),
+(5, 'Viernes');
 
 -- --------------------------------------------------------
 
@@ -74,6 +104,15 @@ CREATE TABLE `docente` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `docente`
+--
+
+INSERT INTO `docente` (`id_docente`, `rut`, `nombre`, `apellido`, `telefono`, `direccion`, `correo`, `id_usuario`) VALUES
+(1, '197485620', 'Patrick', 'Poblete Gonzalez', 959024491, 'Pasaje la tirana 2168', 'patrick@gmail.com', 1),
+(2, '196709819', 'Carlos', 'Morales Duarte', 947382679, 'Calle falsa 123', 'carlos@gmail.com', 2),
+(3, '183638661', 'Victor', 'Castillo Jara', 979285708, 'Calle falsa 456', 'victor@gmail.com', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +123,14 @@ CREATE TABLE `docente/curso` (
   `id_docente` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `docente/curso`
+--
+
+INSERT INTO `docente/curso` (`id_docente`, `id_curso`) VALUES
+(2, 1),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -111,6 +158,14 @@ CREATE TABLE `ramo` (
   `ramo` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `ramo`
+--
+
+INSERT INTO `ramo` (`id_ramo`, `ramo`) VALUES
+(1, 'Lenguaje'),
+(2, 'Matematica');
+
 -- --------------------------------------------------------
 
 --
@@ -121,6 +176,14 @@ CREATE TABLE `roles` (
   `id_rol` int(11) NOT NULL,
   `rol` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id_rol`, `rol`) VALUES
+(1, 'admin'),
+(2, 'docente');
 
 -- --------------------------------------------------------
 
@@ -134,6 +197,15 @@ CREATE TABLE `usuario` (
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `correo`, `password`, `id_rol`) VALUES
+(1, 'patrick@gmail.com', '123', 1),
+(2, 'carlos@gmail.com', '123', 2),
+(3, 'victor@gmail.com', '123', 2);
 
 --
 -- Índices para tablas volcadas
@@ -208,25 +280,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bloque`
 --
 ALTER TABLE `bloque`
-  MODIFY `id_bloque` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bloque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `dia`
 --
 ALTER TABLE `dia`
-  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
@@ -238,19 +310,19 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `ramo`
 --
 ALTER TABLE `ramo`
-  MODIFY `id_ramo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ramo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
