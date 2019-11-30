@@ -11,10 +11,10 @@ if(isset($_GET['cerrar_sesion'])){
 if(isset($_SESSION['tipo_usuario'])){
     switch($_SESSION['tipo_usuario']){
         case 'admin':
-            header('location: menu-admin.html');
+            header('location: menu-admin.php');
         break;
         case 'docente':
-            header('location: menu-usuario.html');
+            header('location: menu-usuario.php');
         break;
     }
 }

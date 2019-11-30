@@ -78,7 +78,3 @@ if(!isset($_SESSION['rol'])){
 </body>
 
 </html>
-
-<?php
-
-?>
