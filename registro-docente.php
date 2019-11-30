@@ -93,7 +93,7 @@ if(!isset($_SESSION['rol'])){
 
             <div class="texto">
                     <i class="fas fa-user"></i>
-                <input type="text" name="rut" id="rut">
+                <input type="text" name="rut" id="rut" placeholder="RUT">
             </div>
             <div class="texto">
                     <i class="fas fa-user"></i>
