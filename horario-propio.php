@@ -4,11 +4,11 @@ include_once 'database.php';
 
 session_start();
 
-if(!isset($_SESSION['rol'])){
-    header('location:index.php');
-}else{
-    if($_SESSION['rol']!=2){
-        header('location:index.php');
+if (!isset($_SESSION['rol'])) {
+    header('location:login.php');
+} else {
+    if ($_SESSION['rol'] != 2) {
+        header('location:login.php');
     }
 }
 
@@ -27,35 +27,33 @@ if(!isset($_SESSION['rol'])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
+    <link rel="stylesheet" href="css/estilo-form.css">
 
-    <title>Menu Docente</title>
+    <title>Mi Horario</title>
 </head>
 
 <body>
-    <header>    
+    <header>
         <img class="top" src="img/login.jpg">
     </header>
-
-
     <?php
-    $usu=$_SESSION['usu'];
-    $db=new Database();
-    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu'=>$usu]);
+    $usu = $_SESSION['usu'];
+    $db = new Database();
+    $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+    $query1->execute(['usu' => $usu]);
 
-    $row1=$query1->fetch(PDO::FETCH_NUM);
-    $rol1=$row1[0];
+    $row1 = $query1->fetch(PDO::FETCH_NUM);
+    $rol1 = $row1[0];
 
-    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1'=>$rol1]);
+    $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+    $query2->execute(['rol1' => $rol1]);
 
-    $row2=$query2->fetch(PDO::FETCH_NUM);
-    $nom=$row2[2];
-    $ape=$row2[3];
-    
+    $row2 = $query2->fetch(PDO::FETCH_NUM);
+    $nom = $row2[2];
+    $ape = $row2[3];
+
     ?>
 
     <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
@@ -72,26 +70,42 @@ if(!isset($_SESSION['rol'])){
                 </li>
             </ul>
         </div>
-        <h5>Bienvenido: <?php echo $nom." ".$ape ?></h5>
+        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
-        <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
-
-            <textarea name="" id="" cols="100" rows="10"></textarea>
-        </div>
-
-
+    <section>
     </section>
-
+    <div align="center">
+        <h1>Mi Horario</h1>
+    </div>
+    <div class="centrartabla">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Bloque</th>
+                    <th scope="col">Asignatura</th>
+                    <th scope="col">Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Lenguaje</td>
+                    <td>2°Basico M</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Matemáticas</td>
+                    <td>8vo medio F</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <footer>
 
     </footer>
 </body>
 
 </html>
-<?php
-
-?>

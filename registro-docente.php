@@ -66,8 +66,8 @@ if (!isset($_SESSION['rol'])) {
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Horario Profesores</a>
-                        <a class="dropdown-item" href="#">Horario Cursos</a>
+                    <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
+                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
                 <li class="nav-item">
