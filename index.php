@@ -60,15 +60,22 @@ if(isset($_POST['correo']) && isset($_POST['password'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="css/estilo-login.css">
+    <link rel="stylesheet" href="css/estilo-img.css">
+    
     <script src="https://kit.fontawesome.com/01c2cd0a1f.js" crossorigin="anonymous"></script>
+
     <title>Inicio de sesion</title>
 </head>
 
 <body>
+    <header>    
+        <img class="top" src="img/login.jpg">
+    </header>
     <div class="box-formulario">
-
-        <h1>Inicio de sesion</h1>
+        <img class="box" src="img/logo-delfin.png">  
+        <h2>INICIO DE SESIÓN</h2>
         <!--Crear archivo php VerificarUsuario-->
         <form action="#" method="post">
 

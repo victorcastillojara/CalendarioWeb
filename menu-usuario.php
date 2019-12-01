@@ -20,25 +20,27 @@ if(!isset($_SESSION['rol'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/menu.css">
 
-    <title>Document</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/estilo-nav.css">
+    <link rel="stylesheet" href="css/estilo-img.css">
+    
+    <title>Menu Docente</title>
 </head>
 
 <body>
-    <header>
-        <div class="imgCabecera">
-            <img src="img/avengers.jpg" style="width:100%;height:200px;">
-        </div>
-
+    <header>    
+        <img class="top" src="img/login.jpg">
     </header>
 
 
-    <nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">

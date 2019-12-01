@@ -4,27 +4,29 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /*background: url(aqui va la imagen de fondo si es que lleva) no-repeat;
-    background-size:cover */  
+   /* background: url(/CalendarioWeb/img/login.jpg) no-repeat;
+    background-size: cover*/
+    
 }
 
 .box-formulario{
     width: 280px;
     position: absolute;
-    top: 25%;
+    top: 230px;
     left: 35%;
     padding: 40px;
     transform: translate(-50,-50);
-    background: rgba(0, 0, 0, .7);
-    border-radius: 20px;
+    background: rgba(105, 156, 252, .7);
+
 }
 
-.box-formulario h1{
-    float: left;
+.box-formulario h2{
+    float: center;
+    text-align: center;
     border-bottom:6px solid #395a99;
     margin-bottom: 50px;
     padding: 13px 0;
-    color: white;
+    color: black;
 }
 .texto{
     width: 100%;

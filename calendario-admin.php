@@ -40,20 +40,19 @@ if(!isset($_SESSION['rol'])){
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   
   <link rel="stylesheet" href="css/estilo_dias.css">
+  <link rel="stylesheet" href="css/estilo-nav.css">
+  <link rel="stylesheet" href="css/estilo-img.css">
 
   <title>Calendario web</title>
 </head>
 
 <body>
-<header>
-        <div class="imgCabecera">
-            <img src="img/avengers.jpg" style="width:100%;height:200px;">
-        </div>
-
+    <header>    
+        <img class="top" src="img/login.jpg">
     </header>
 
 
-    <nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
