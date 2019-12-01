@@ -50,54 +50,53 @@ if(!isset($_SESSION['rol'])){
     <header>    
         <img class="top" src="img/login.jpg">
     </header>
+    <?php
+    $usu = $_SESSION['usu'];
+    $db = new Database();
+    $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+    $query1->execute(['usu' => $usu]);
 
+    $row1 = $query1->fetch(PDO::FETCH_NUM);
+    $rol1 = $row1[0];
 
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
+    $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+    $query2->execute(['rol1' => $rol1]);
+
+    $row2 = $query2->fetch(PDO::FETCH_NUM);
+    $nom = $row2[2];
+    $ape = $row2[3];
+
+    ?>
+    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Horario Profesores</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Horarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Horario Profesores</a>
+                        <a class="dropdown-item" href="#">Horario Cursos</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Horario Cursos</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Agendar Evaluacion</a>
+                    <a class="nav-link" href="registro-docente.php">Registrar Docente</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Registrar Docente</a>
-                </li>
-
             </ul>
-
         </div>
+        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
 
     <section>
-    <?php
-    $usu=$_SESSION['usu'];
-    $db=new Database();
-    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu'=>$usu]);
 
-    $row1=$query1->fetch(PDO::FETCH_NUM);
-    $rol1=$row1[0];
-
-    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1'=>$rol1]);
-
-    $row2=$query2->fetch(PDO::FETCH_NUM);
-    $nom=$row2[2];
-    $ape=$row2[3];
-    
-    ?>
-
-        <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
   <div class="container">
     <div class="row">
       <div class="col"></div>

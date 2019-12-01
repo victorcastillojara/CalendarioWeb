@@ -19,7 +19,7 @@ if(!isset($_SESSION['rol'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -30,15 +30,13 @@ if(!isset($_SESSION['rol'])){
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
 
-    <title>Menu Administrador</title>
+    <title>Horario Docente</title>
 </head>
 
 <body>
-    <header>    
+    <header>
         <img class="top" src="img/login.jpg">
     </header>
-
-
     <?php
     $usu = $_SESSION['usu'];
     $db = new Database();
@@ -67,8 +65,8 @@ if(!isset($_SESSION['rol'])){
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
+                    <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
+                    <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -83,16 +81,10 @@ if(!isset($_SESSION['rol'])){
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
-        <div align="center" style="margin-top:30px;">
-
-            <h1>Informacion</h1>
-
-            <textarea name="" id="" cols="100" rows="10"></textarea>
-        </div>
-
-
     </section>
-
+    <div align="center">
+        <h1>Horario por bloque de Docente</h1>
+    </div>
     <footer>
 
     </footer>

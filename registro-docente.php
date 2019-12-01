@@ -4,10 +4,10 @@ include_once 'database.php';
 
 session_start();
 
-if(!isset($_SESSION['rol'])){
+if (!isset($_SESSION['rol'])) {
     header('location:index.php');
-}else{
-    if($_SESSION['rol']!=1){
+} else {
+    if ($_SESSION['rol'] != 1) {
         header('location:index.php');
     }
 }
@@ -23,31 +23,52 @@ if(!isset($_SESSION['rol'])){
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/menu.css">
+    <script src="js/regiones.js"></script>
 
-    <title>Document</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/estilo-nav.css">
+    <link rel="stylesheet" href="css/estilo-img.css">
+    <link rel="stylesheet" href="css/estilo-form.css">
+
+    <title>Registro Docente</title>
 </head>
 
 <body>
     <header>
-        <div class="imgCabecera">
-            <img src="img/avengers.jpg" style="width:100%;height:200px;">
-        </div>
-
+        <img class="top" src="img/login.jpg">
     </header>
 
+    <?php
+    $usu = $_SESSION['usu'];
+    $db = new Database();
+    $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+    $query1->execute(['usu' => $usu]);
 
-    <nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+    $row1 = $query1->fetch(PDO::FETCH_NUM);
+    $rol1 = $row1[0];
+
+    $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+    $query2->execute(['rol1' => $rol1]);
+
+    $row2 = $query2->fetch(PDO::FETCH_NUM);
+    $nom = $row2[2];
+    $ape = $row2[3];
+
+    ?>
+    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Horario Profesores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Horario Cursos</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Horarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Horario Profesores</a>
+                        <a class="dropdown-item" href="#">Horario Cursos</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
@@ -55,80 +76,71 @@ if(!isset($_SESSION['rol'])){
                 <li class="nav-item">
                     <a class="nav-link" href="registro-docente.php">Registrar Docente</a>
                 </li>
-
             </ul>
-
         </div>
+        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
 
     <section>
-    <?php
-    $usu=$_SESSION['usu'];
-    $db=new Database();
-    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu'=>$usu]);
 
-    $row1=$query1->fetch(PDO::FETCH_NUM);
-    $rol1=$row1[0];
 
-    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1'=>$rol1]);
 
-    $row2=$query2->fetch(PDO::FETCH_NUM);
-    $nom=$row2[2];
-    $ape=$row2[3];
-    
-    ?>
+        <div align="center">
+            <h1>Registro de Docentes</h1>
+            <!--Crear archivo php VerificarUsuario-->
+            <form action="registro.php" method="post">
+                <div class="center_div">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="rut">RUT Docente</label>
+                            <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nombre">Nombre Docente</label>
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="apellido">Apellido(s) Docente</label>
+                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+                        </div>
+                    </div>
 
-        <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
-        <div align="center" style="margin-top:30px;">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="telefono">Telefono</label>
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
+                        </div>
+                    </div>
 
-        <div class="box-formulario">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
+                        </div>
 
-        <h1>Registro de docentes</h1>
-        <!--Crear archivo php VerificarUsuario-->
-        <form action="registro.php" method="post">
+                        
+                        <div class="form-group col-md-3">
+                            <label for="id_usuario">ID De Usuario</label>
+                            <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrar Docente</button>
 
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="rut" id="rut" placeholder="RUT">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="apellido" id="apellido" placeholder="Apellido(s)">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="telefono" id="telefono" placeholder="Telefono">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="direccion" id="direccion" placeholder="Direccion">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="correo" id="correo" placeholder="Correo">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="password" id="password" placeholder="Contraseña">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="id_usuario" id="id_usuario" placeholder="ID de usuario">
-            </div>
+            </form>
 
-            <input type="submit" class="btn" value="Registrar">
-
-        </form>
-    </div>
         </div>
+
 
 
     </section>
