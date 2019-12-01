@@ -146,7 +146,7 @@ if(!isset($_SESSION['rol'])){
           $('#btnModificar').prop("disabled",false);
           $('#btnEliminar').prop("disabled",false);
 
-          $('#tituloEvento').html(calEvent.titulo);
+          $('#tituloEvento').html(calEvent.usuario);
 
           $('#txtDescripcion').val(calEvent.descripcion);
 
@@ -155,6 +155,8 @@ if(!isset($_SESSION['rol'])){
           $('#txtTitulo').val(calEvent.title);
 
           $('#bloque').val(calEvent.bloque);
+
+          $('#curso').val(calEvent.curso);
 
           $('#txtColor').val(calEvent.color);
 
@@ -206,7 +208,8 @@ if(!isset($_SESSION['rol'])){
 
           <input type="hidden" id="txtID" name="txtID">
           <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value="<?php $_SESSION['usuario']?>"> 
+          <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom." ".$ape ?>">
+          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>"> 
 
           <div class="form-row">
 
@@ -305,6 +308,7 @@ if(!isset($_SESSION['rol'])){
     function RecolectarDatosGUI() {
       NuevoEvento = {
         id: $('#txtID').val(),
+        id_usuario: $('#id_usuario').val(),
         usuario:$('#usuario').val(),
         curso:$('#curso').val(),
         bloque:$('#bloque').val(),

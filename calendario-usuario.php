@@ -149,6 +149,8 @@ if(!isset($_SESSION['rol'])){
 
           $('#bloque').val(calEvent.bloque);
 
+          $('#curso').val(calEvent.curso);
+
           $('#txtColor').val(calEvent.color);
 
           FechaHora = calEvent.start._i.split(" ");
@@ -200,6 +202,7 @@ if(!isset($_SESSION['rol'])){
           <input type="hidden" id="txtID" name="txtID">
           <input type="hidden" id="txtFecha" name="txtFecha">
           <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom." ".$ape ?>"> 
+          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">  
 
           <div class="form-row">
 
@@ -297,6 +300,7 @@ if(!isset($_SESSION['rol'])){
     function RecolectarDatosGUI() {
       NuevoEvento = {
         id: $('#txtID').val(),
+        id_usuario: $('#id_usuario').val(),
         usuario:$('#usuario').val(),
         curso:$('#curso').val(),
         bloque:$('#bloque').val(),
