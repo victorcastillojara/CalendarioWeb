@@ -1,11 +1,35 @@
-.top{
-width: 100%;
-height: 200px;
-
-}
-
-.box{
-    width: 150px;
-    width: 150px;
-    margin-left:80px ;
-}
+    .top {
+        /*INTENTO 1 DE IMAGEN
+        margin-top: 200px;
+        margin-left: 10px;
+        width: 800px;
+        height: 400px;*/
+        width: 100%;
+        height: 300px;
+    }
+    
+    .box {
+        width: 150px;
+        width: 150px;
+        margin-left: 80px;
+    }
+    
+    .top1 {
+        /*INTENTO 1 DE IMAGEN
+        margin-top: 200px;
+        margin-left: 10px;
+        width: 800px;
+        height: 400px;*/
+        width: 100%;
+        height: 300px;
+    }
+    
+    .top2 {
+        /*INTENTO 1 DE IMAGEN
+        margin-top: 200px;
+        margin-left: 10px;
+        width: 800px;
+        height: 400px;*/
+        width: 100%;
+        height: 300px;
+    }

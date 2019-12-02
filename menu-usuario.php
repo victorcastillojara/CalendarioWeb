@@ -30,7 +30,7 @@ if(!isset($_SESSION['rol'])){
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
-    
+
     <title>Menu Docente</title>
 </head>
 
@@ -38,27 +38,6 @@ if(!isset($_SESSION['rol'])){
     <header>    
         <img class="top" src="img/login.jpg">
     </header>
-
-
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
-        <div class="navegacion">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="menu-usuario.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
-                </li>
-            </ul>
-
-        </div>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
-
-    </nav>
-
     <section>
     <?php
     $usu=$_SESSION['usu'];
@@ -78,7 +57,24 @@ if(!isset($_SESSION['rol'])){
     
     ?>
 
-        <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
+    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
+        <div class="navegacion">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="menu-usuario.php">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+                </li>
+            </ul>
+        </div>
+        <h5>Bienvenido: <?php echo $nom." ".$ape ?></h5>
+        <a class="nav-link" href="logout.php">cerrar sesion</a>
+
+    </nav>
         <div align="center" style="margin-top:30px;">
 
             <h1>Informacion</h1>
