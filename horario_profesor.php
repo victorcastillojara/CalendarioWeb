@@ -96,48 +96,27 @@ if(!isset($_SESSION['rol'])){
     </tr>
   </thead>
   <tbody>
+      <?php 
+      include 'conexion.php';
+      $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
+      // aqui ahi que revisar la caga para el horario T.T
+      $query = $mysqli -> query ("SELECT * FROM horario order by id_bloque");
+
+      $valores = mysqli_fetch_array($query);
+              
+      while ($valores = mysqli_fetch_array($query)) {
+        $bloque=$valores[2];
+        $curso=$valores[3];
+      ?>
   
     <tr>
-      <th scope="row">8:00 a 9:30</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><?php echo $bloque ?></th>
+      <td><?php echo $curso ?></td>
     </tr>
-    <tr>
-      <th scope="row">9:30 a 11:15</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">11:30 a 12:45</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">14:00 a 15:30</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">15:45 a 17:00</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
+    <?php
+      }
+    ?>
   </tbody>
 </table>
 
