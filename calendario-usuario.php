@@ -1,6 +1,6 @@
 <?php
 
-include_once 'database.php';
+      include_once 'database.php';
 
 session_start();
 
@@ -74,7 +74,7 @@ if(!isset($_SESSION['rol'])){
                     <a class="nav-link active" href="menu-usuario.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="horario-propio.php">Mi Horario</a>
+                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
@@ -121,10 +121,11 @@ if(!isset($_SESSION['rol'])){
 
         dayClick: function (date, jsEvent, view) {
 
+          Limpiar();
           //desactivacion de botones sin evento
           $('#btnAgregar').prop("disabled",false);
 
-          Limpiar();
+          
           $('#txtFecha').val(date.format());
 
           $("#ModalEventos").modal();
@@ -203,6 +204,8 @@ if(!isset($_SESSION['rol'])){
           <input type="hidden" id="txtFecha" name="txtFecha">
           <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom." ".$ape ?>"> 
           <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">  
+          <input type="hidden" id="txtHora" value="10:30" name="txtHora" class="form-control">
+
 
           <div class="form-row">
 
@@ -229,11 +232,6 @@ if(!isset($_SESSION['rol'])){
               <label>Titulo</label>
               <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evaluacion">
             </div>
-            <div class="form-group col-md-8">
-              <label>Hora inicio evaluacion</label>
-              <input type="time" id="txtHora" value="00:00" name="txtHora" class="form-control">
-            </div>
-
             <div class="form-group col-md-4">
               <!--<label>bloque</label>
               <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
@@ -345,6 +343,8 @@ if(!isset($_SESSION['rol'])){
     function Limpiar() {
         $('#txtID').val('');
         $('#txtTitulo').val('');
+        $('#bloque').val('');
+        $('#curso').val('');
         $('#txtColor').val('');
         $('#txtDescripcion').val('');
 

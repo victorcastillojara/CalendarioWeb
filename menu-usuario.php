@@ -38,8 +38,7 @@ if(!isset($_SESSION['rol'])){
     <header>    
         <img class="top" src="img/login.jpg">
     </header>
-
-
+    <section>
     <?php
     $usu=$_SESSION['usu'];
     $db=new Database();
@@ -65,7 +64,7 @@ if(!isset($_SESSION['rol'])){
                     <a class="nav-link active" href="menu-usuario.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="horario-propio.php">Mi Horario</a>
+                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>

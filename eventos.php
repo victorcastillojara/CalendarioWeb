@@ -1,16 +1,11 @@
 <?php
-
 session_start();
 
 header('Content-Type: application/json');
 
 $pdo=new PDO("mysql:dbname=scejc;host=127.0.0.1","root","");
 
-
-
 $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
-
-
 
 switch($accion){
     case 'agregar':
@@ -86,16 +81,14 @@ echo json_encode($respuesta);
 
     default:
     //seleccionar los eventos del calendadrio
-    
 
-$SentenciaSQL=$pdo->prepare("SELECT * FROM eventos where usuario = 'Patrick Poblete Gonzalez'");
+$SentenciaSQL=$pdo->prepare("SELECT * FROM eventos");
 
 $SentenciaSQL->execute();
 
 $resultado=$SentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($resultado);
-
 
     break;
 }

@@ -23,7 +23,6 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
-    <script src="js/regiones.js"></script>
 
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
@@ -66,7 +65,7 @@ if (!isset($_SESSION['rol'])) {
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
+                    <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
                         <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>

@@ -4,10 +4,10 @@ include_once 'database.php';
 
 session_start();
 
-if(!isset($_SESSION['rol'])){
+if (!isset($_SESSION['rol'])) {
     header('location:index.php');
-}else{
-    if($_SESSION['rol']!=1){
+} else {
+    if ($_SESSION['rol'] != 1) {
         header('location:index.php');
     }
 }
@@ -19,7 +19,7 @@ if(!isset($_SESSION['rol'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -34,7 +34,7 @@ if(!isset($_SESSION['rol'])){
 </head>
 
 <body>
-    <header>    
+    <header>
         <img class="top" src="img/login.jpg">
     </header>
 
@@ -67,7 +67,7 @@ if(!isset($_SESSION['rol'])){
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
+                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
                         <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
@@ -83,12 +83,12 @@ if(!isset($_SESSION['rol'])){
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
-        <div align="center" style="margin-top:30px;">
+    <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
+        <h1>Informacion</h1>
 
-            <textarea name="" id="" cols="100" rows="10"></textarea>
-        </div>
+        <textarea name="" id="" cols="100" rows="10"></textarea>
+    </div>
 
 
     </section>

@@ -4,10 +4,10 @@ include_once 'database.php';
 
 session_start();
 
-if(!isset($_SESSION['rol'])){
+if (!isset($_SESSION['rol'])) {
     header('location:index.php');
-}else{
-    if($_SESSION['rol']!=1){
+} else {
+    if ($_SESSION['rol'] != 1) {
         header('location:index.php');
     }
 }
@@ -65,8 +65,8 @@ if(!isset($_SESSION['rol'])){
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="horario-docente.php">Horario Profesores</a>
-                    <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
+                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
+                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -81,10 +81,70 @@ if(!isset($_SESSION['rol'])){
         <a class="nav-link" href="logout.php">cerrar sesion</a>
 
     </nav>
+    <section>
+        <div align="center">
+            <h1>Horario Cursos</h1>
+        </div>
+        <div style="margin-left:60px;margin-right:60px;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Bloque</th>
+                        <th scope="col">Lunes</th>
+                        <th scope="col">Martes</th>
+                        <th scope="col">Miercoles</th>
+                        <th scope="col">Jueves</th>
+                        <th scope="col">Viernes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">8:00 a 9:30</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9:30 a 11:15</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11:30 a 12:45</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14:00 a 15:30</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15:45 a 17:00</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
     </section>
-    <div align="center">
-        <h1>Horario Cursos</h1>
-    </div>
+
     <footer>
 
     </footer>
