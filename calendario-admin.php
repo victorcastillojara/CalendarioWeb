@@ -210,6 +210,9 @@ if(!isset($_SESSION['rol'])){
           <input type="hidden" id="txtFecha" name="txtFecha">
           <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom." ".$ape ?>">
           <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>"> 
+          <input type="hidden" id="txtHora" value="10:30" name="txtHora" class="form-control">
+
+         
 
           <div class="form-row">
 
@@ -222,7 +225,7 @@ if(!isset($_SESSION['rol'])){
                 ?>
                 <label for="curso">Seleccione curso</label>
                 <select id="curso" name="curso" class="form-control">
-                <option value="0">Seleccione curso</option>
+                <option value="0" disabled >Seleccione curso</option>
                     <?php
                       $query = $mysqli -> query ("SELECT * FROM curso");
                       while ($valores = mysqli_fetch_array($query)) {
@@ -236,11 +239,7 @@ if(!isset($_SESSION['rol'])){
               <label>Titulo evaluación</label>
               <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
             </div>
-            <div class="form-group col-md-8">
-              <label>Hora inicio evaluacion</label>
-              <input type="time" id="txtHora" value="10:30" name="txtHora" class="form-control">
-
-            </div>
+            
 
             <div class="form-group col-md-4">
               <!--<label>bloque</label>
@@ -253,7 +252,7 @@ if(!isset($_SESSION['rol'])){
                 ?>
                 <label for="bloque">Seleccione bloque</label>
                 <select id="bloque" name="boque" class="form-control">
-                <option value="0">Seleccione bloque</option>
+                <option value="0" disabled >Seleccione bloque</option>
                     <?php
                       $query = $mysqli -> query ("SELECT * FROM bloque");
                       while ($valores = mysqli_fetch_array($query)) {
@@ -353,6 +352,8 @@ if(!isset($_SESSION['rol'])){
     function Limpiar() {
         $('#txtID').val('');
         $('#txtTitulo').val('');
+        $('#bloque').val('');
+        $('#curso').val('');
         $('#txtColor').val('');
         $('#txtDescripcion').val('');
 

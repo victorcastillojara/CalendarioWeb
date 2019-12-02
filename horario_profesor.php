@@ -81,9 +81,69 @@ if(!isset($_SESSION['rol'])){
         <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
         <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
+            <h1><strong>Mi horario</strong></h1>
 
-            <textarea name="" id="" cols="100" rows="10"></textarea>
+            <div style="margin-left:60px;margin-right:60px;">
+            <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Bloque</th>
+      <th scope="col">Lunes</th>
+      <th scope="col">Martes</th>
+      <th scope="col">Miercoles</th>
+      <th scope="col">Jueves</th>
+      <th scope="col">Viernes</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  
+    <tr>
+      <th scope="row">8:00 a 9:30</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">9:30 a 11:15</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">11:30 a 12:45</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">14:00 a 15:30</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">15:45 a 17:00</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            
         </div>
 
 
