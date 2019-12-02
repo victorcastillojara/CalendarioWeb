@@ -93,7 +93,7 @@ if(!isset($_SESSION['rol'])){
 
             <div class="texto">
                     <i class="fas fa-user"></i>
-                <input type="text" name="rut" id="rut" placeholder="RUT">
+                <input type="text" name="rut"  placeholder="RUT">
             </div>
             <div class="texto">
                     <i class="fas fa-user"></i>
@@ -118,10 +118,6 @@ if(!isset($_SESSION['rol'])){
             <div class="texto">
                     <i class="fas fa-user"></i>
                 <input type="text" name="password" id="password" placeholder="Contraseña">
-            </div>
-            <div class="texto">
-                    <i class="fas fa-user"></i>
-                <input type="text" name="id_usuario" id="id_usuario" placeholder="ID de usuario">
             </div>
 
             <input type="submit" class="btn" value="Registrar">

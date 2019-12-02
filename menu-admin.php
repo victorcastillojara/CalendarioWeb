@@ -82,6 +82,7 @@ if(!isset($_SESSION['rol'])){
     $nom=$row2[2];
     $ape=$row2[3];
     
+    $_SESSION['nombreusu']=$nom;
     ?>
 
         <h1>Bienvenido: <?php echo $nom." ".$ape ?></h1>
