@@ -200,13 +200,10 @@ if (!isset($_SESSION['rol'])) {
 
       <h1><strong>Mi horario</strong></h1>
 
-
-
-
       <!--inicio tabla-->
       <div style="margin-left:60px;margin-right:60px;">
         <table class="table table-bordered">
-          <thead>
+          <thead> 
             <tr>
               <th scope="col">Bloque</th>
               <th scope="col">Lunes</th>
@@ -225,19 +222,24 @@ if (!isset($_SESSION['rol'])) {
 
             $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-            $query = $mysqli->query("SELECT docente.nombre,curso.curso,bloque.bloque FROM horario
-              inner join docente on docente.id_docente=horario.id_docente 
+            $query = $mysqli->query("SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+             FROM horario inner join docente on docente.id_docente=horario.id_docente 
               inner join curso on curso.id_curso=horario.id_curso
               inner join bloque on bloque.id_bloque=horario.id_bloque
+              inner join ramo on ramo.id_ramo=horario.id_ramo
+              inner join dia on dia.id_dia=horario.id_dia
               where horario.id_docente=$rol1 order by horario.id_bloque");
             while ($valores = mysqli_fetch_array($query)) { ?>
               <tr>
                 <th scope="row"><?php echo $valores['bloque'] ?></th>
-                <td><?php echo $valores['nombre'] ?></td>
+                <td><?php echo $valores['nombre'] . " " . $valores['apellido'] . "<br>"
+                        . $valores['curso']."<br>". $valores['ramo'] ?></td>
               </tr>
             <?php
             }
-            ?>
+            ?>  
+
+
           </tbody>
         </table>
 
