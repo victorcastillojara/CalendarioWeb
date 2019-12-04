@@ -29,7 +29,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-form.css">
 
-    <title>Registro Docente</title>
+    <title>Registro Curso</title>
 </head>
 
 <body>
@@ -93,54 +93,25 @@ if (!isset($_SESSION['rol'])) {
 
 
         <div align="center">
-            <h1>Registro de Docentes</h1>
-            <!--Crear archivo php VerificarUsuario-->
-            <form action="registro.php" method="post">
+            <h1>Registro de Curso</h1>
+            <form action="registrocurso.php" method="post"><!-- HACER QUE REGISTRE EN CAMPO CURSO-->
                 <div class="center_div">
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="rut">RUT Docente</label>
-                            <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
+                            <label for="curso">Curso</label>
+                            <input type="text" class="form-control" name="curso" id="curso" placeholder="Ingresar Curso">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="nombre">Nombre Docente</label>
-                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                            <label for="nivel">Nivel Curso</label>
+                            <input type="text" name="nivel" class="form-control" id="nivel" placeholder="Nivel de Curso">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="apellido">Apellido(s) Docente</label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="Email">Email</label>
-                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="contrasena">Contraseña</label>
-                            <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
-                        </div>
-
-                        
-                        <div class="form-group col-md-3">
-                            <label for="id_usuario">ID De Usuario</label>
-                            <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
+                            <label for="cant_alumnos">Cantidad de Alumnos</label>
+                            <input type="text" class="form-control" name="cant_alumnos" id="cant_alumnos" placeholder="Cantidad de alumnos">
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar Docente</button>
+                <button type="submit" class="btn btn-primary">Registrar Curso</button>
 
             </form>
 

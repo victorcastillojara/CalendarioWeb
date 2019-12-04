@@ -14,7 +14,11 @@ body {
     /*230px original, intento 1=150px*/
     top: 230px;
     left: 35%;
-    padding: 40px;
+    -moz-border-radius: 10 px;
+    -webkit-border-radius: 10px;
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: 100px;
     /* SE AGREGA AL INTENTO 1 al borrar "left:35%;"
     margin-left: 1000px;*/
     transform: translate(-50, -50);

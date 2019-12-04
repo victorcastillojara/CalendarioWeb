@@ -85,8 +85,14 @@ if(!isset($_SESSION['rol'])){
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="registro-docente.php">Registrar Docente</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Registrar
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
+                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
+                    </div>
                 </li>
             </ul>
         </div>
