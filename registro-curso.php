@@ -94,7 +94,7 @@ if (!isset($_SESSION['rol'])) {
 
         <div align="center">
             <h1>Registro de Curso</h1>
-            <form action="registrocurso.php" method="post"><!-- HACER QUE REGISTRE EN CAMPO CURSO-->
+            <form action="#" method="post"><!-- HACER QUE REGISTRE EN TABLA CURSO (REGISTROCURSO.PHP ES LA PAGINA)-->
                 <div class="center_div">
                     <div class="form-row">
                         <div class="form-group col-md-3">

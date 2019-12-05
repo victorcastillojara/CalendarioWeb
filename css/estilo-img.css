@@ -11,10 +11,9 @@
     }
     
     .top1 {
-        /*INTENTO 1 DE IMAGEN*/
-        margin-top: 200px;
-        margin-left: 10px;
-        width: 800px;
-        height: 400px;
+        /*imagen expandida*/
+
+        width: 1920px;
+        height: 943px;
 
     }
