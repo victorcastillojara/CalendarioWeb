@@ -85,8 +85,8 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
     <div align="center" style="margin-top:30px;">

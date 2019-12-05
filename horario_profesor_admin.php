@@ -103,7 +103,7 @@ if (!isset($_SESSION['rol'])) {
 
             ?>
 
-            <form action="" method="post">
+            <form action="#" method="post">
                 <select name="horarioProfesor" id="horarioProfesor">
                     <option value="0">Seleccione profesor:</option>
                     <?php
@@ -119,63 +119,120 @@ if (!isset($_SESSION['rol'])) {
             <h1><strong>Horario profesor</strong></h1>
 
             <div style="margin-left:60px;margin-right:60px;">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Bloque</th>
-                            <th scope="col">Lunes</th>
-                            <th scope="col">Martes</th>
-                            <th scope="col">Miercoles</th>
-                            <th scope="col">Jueves</th>
-                            <th scope="col">Viernes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">8:00 a 9:30</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9:30 a 11:15</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11:30 a 12:45</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">14:00 a 15:30</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">15:45 a 17:00</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Bloque</th>
+              <th scope="col">Lunes</th>
+              <th scope="col">Martes</th>
+              <th scope="col">Miercoles</th>
+              <th scope="col">Jueves</th>
+              <th scope="col">Viernes</th>
+            </tr>
+          </thead>
+          <tbody>
 
-            </div>
-        </div>
+<?php
+$db=new Database();
+$queryLunes=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+FROM horario inner join docente on docente.id_docente=horario.id_docente 
+ inner join curso on curso.id_curso=horario.id_curso
+ inner join bloque on bloque.id_bloque=horario.id_bloque
+ inner join ramo on ramo.id_ramo=horario.id_ramo
+ inner join dia on dia.id_dia=horario.id_dia
+ where horario.id_docente=:rol1 and dia="Lunes" order by horario.id_bloque');
+$queryLunes->execute(['rol1'=>$rol1]);
+$rowLunes=$queryLunes->fetchAll(PDO::FETCH_ASSOC);
+
+$queryMartes=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+FROM horario inner join docente on docente.id_docente=horario.id_docente 
+ inner join curso on curso.id_curso=horario.id_curso
+ inner join bloque on bloque.id_bloque=horario.id_bloque
+ inner join ramo on ramo.id_ramo=horario.id_ramo
+ inner join dia on dia.id_dia=horario.id_dia
+ where horario.id_docente=:rol1 and horario.id_dia=2 order by horario.id_bloque');
+$queryMartes->execute(['rol1'=>$rol1]);
+$rowMartes=$queryMartes->fetchAll(PDO::FETCH_ASSOC);
+
+$queryMiercoles=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+FROM horario inner join docente on docente.id_docente=horario.id_docente 
+ inner join curso on curso.id_curso=horario.id_curso
+ inner join bloque on bloque.id_bloque=horario.id_bloque
+ inner join ramo on ramo.id_ramo=horario.id_ramo
+ inner join dia on dia.id_dia=horario.id_dia
+ where horario.id_docente=:rol1 and horario.id_dia=3 order by horario.id_bloque');
+$queryMiercoles->execute(['rol1'=>$rol1]);
+$rowMiercoles=$queryMiercoles->fetchAll(PDO::FETCH_ASSOC);
+
+$queryJueves=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+FROM horario inner join docente on docente.id_docente=horario.id_docente 
+ inner join curso on curso.id_curso=horario.id_curso
+ inner join bloque on bloque.id_bloque=horario.id_bloque
+ inner join ramo on ramo.id_ramo=horario.id_ramo
+ inner join dia on dia.id_dia=horario.id_dia
+ where horario.id_docente=:rol1 and horario.id_dia=4 order by horario.id_bloque');
+$queryJueves->execute(['rol1'=>$rol1]);
+$rowJueves=$queryJueves->fetchAll(PDO::FETCH_ASSOC);
+
+$queryViernes=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
+FROM horario inner join docente on docente.id_docente=horario.id_docente 
+ inner join curso on curso.id_curso=horario.id_curso
+ inner join bloque on bloque.id_bloque=horario.id_bloque
+ inner join ramo on ramo.id_ramo=horario.id_ramo
+ inner join dia on dia.id_dia=horario.id_dia
+ where horario.id_docente=:rol1 and horario.id_dia=5 order by horario.id_bloque');
+$queryViernes->execute(['rol1'=>$rol1]);
+$rowViernes=$queryViernes->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+            <tr>
+              <th scope="row">8:00 a 9:15</th>
+              <td><?php if($rowLunes[0]['bloque']=="8:00 a 9:30") echo $rowLunes[0]['curso'];?></td>
+              <td><?php if($rowMartes[0]['bloque']=="8:00 a 9:30") echo $rowMartes[0]['curso']; ?></td>
+              <td><?php if($rowMiercoles[0]['bloque']=="8:00 a 9:30") echo $rowMiercoles[0]['curso']; ?></td>
+              <td><?php if($rowJueves[0]['bloque']=="8:00 a 9:30") echo $rowJueves[0]['curso']; ?></td>
+              <td><?php if($rowViernes[0]['bloque']=="8:00 a 9:30") echo $rowViernes[0]['curso']; ?></td>
+            </tr>
+            <tr>
+              <th scope="row">9:30 a 11:15</th>
+              <td><?php if($rowLunes[1]['bloque']=="9:30 a 11:15") echo $rowLunes[1]['curso'];?></td>
+              <td><?php if($rowMartes[1]['bloque']=="9:30 a 11:15") echo $rowMartes[1]['curso'];?></td>
+              <td><?php if($rowMiercoles[1]['bloque']=="9:30 a 11:15") echo $rowMiercoles[1]['curso'];?></td>
+              <td><?php if($rowJueves[1]['bloque']=="9:30 a 11:15") echo $rowJueves[1]['curso'];?></td>
+              <td><?php if($rowViernes[1]['bloque']=="9:30 a 11:15") echo $rowViernes[1]['curso'];?></td>
+            </tr>
+            <tr>
+              <th scope="row">11:30 a 12:45</th>
+              <td><?php if($rowLunes[2]['bloque']=="11:30 a 12:45") echo $rowLunes[2]['curso'];?></td>
+              <td><?php if($rowMartes[2]['bloque']=="11:30 a 12:45") echo $rowMartes[2]['curso'];?></td>
+              <td><?php if($rowMiercoles[2]['bloque']=="11:30 a 12:45") echo $rowMiercoles[2]['curso'];?></td>
+              <td><?php if($rowJueves[2]['bloque']=="11:30 a 12:45") echo $rowJueves[2]['curso'];?></td>
+              <td><?php if($rowViernes[2]['bloque']=="11:30 a 12:45") echo $rowViernes[2]['curso'];?></td>
+            </tr>
+            <tr>
+              <th scope="row">14:00 a 15:30</th>
+              <td><?php if($rowLunes[3]['bloque']=="14:00 a 15:30") echo $rowLunes[3]['curso'];?></td>
+              <td><?php if($rowMartes[3]['bloque']=="14:00 a 15:30") echo $rowMartes[3]['curso'];?></td>
+              <td><?php if($rowMiercoles[3]['bloque']=="14:00 a 15:30") echo $rowMiercoles[3]['curso'];?></td>
+              <td><?php if($rowJueves[3]['bloque']=="14:00 a 15:30") echo $rowJueves[3]['curso'];?></td>
+              <td><?php if($rowViernes[3]['bloque']=="14:00 a 15:30") echo $rowViernes[3]['curso'];?></td>
+            </tr>
+            <tr>
+              <th scope="row">15:45 a 17:00</th>
+              <td><?php if($rowLunes[4]['bloque']=="15:30 a 17:00") echo $rowLunes[4]['curso'];?></td>
+              <td><?php if($rowMartes[4]['bloque']=="15:30 a 17:00") echo $rowMartes[4]['curso'];?></td>
+              <td><?php if($rowMiercoles[4]['bloque']=="15:30 a 17:00") echo $rowMiercoles[4]['curso'];?></td>
+              <td><?php if($rowJueves[4]['bloque']=="15:30 a 17:00") echo $rowJueves[4]['curso'];?></td>
+              <td><?php if($rowViernes[4]['bloque']=="15:30 a 17:00") echo $rowViernes[4]['curso'];?></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+
+    </div>
+
 
 
     </section>
