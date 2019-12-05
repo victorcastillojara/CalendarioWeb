@@ -111,6 +111,7 @@ if (!isset($_SESSION['rol'])) {
                     while ($valores = mysqli_fetch_array($query)) {
                         echo '<option value="' . $valores['id_docente'] . '">' . $valores['nombre'] . ' ' . $valores['apellido'] . '</option>';
                     }
+                    $docente=$_POST['horarioProfesor'];
                     ?>
                 </select>
                 <input type="submit" value="Buscar">
@@ -140,8 +141,8 @@ FROM horario inner join docente on docente.id_docente=horario.id_docente
  inner join bloque on bloque.id_bloque=horario.id_bloque
  inner join ramo on ramo.id_ramo=horario.id_ramo
  inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:rol1 and dia="Lunes" order by horario.id_bloque');
-$queryLunes->execute(['rol1'=>$rol1]);
+ where horario.id_docente=:docente and dia="Lunes" order by horario.id_bloque');
+$queryLunes->execute(['docente'=>$docente]);
 $rowLunes=$queryLunes->fetchAll(PDO::FETCH_ASSOC);
 
 $queryMartes=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
@@ -150,8 +151,8 @@ FROM horario inner join docente on docente.id_docente=horario.id_docente
  inner join bloque on bloque.id_bloque=horario.id_bloque
  inner join ramo on ramo.id_ramo=horario.id_ramo
  inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:rol1 and horario.id_dia=2 order by horario.id_bloque');
-$queryMartes->execute(['rol1'=>$rol1]);
+ where horario.id_docente=:docente and horario.id_dia=2 order by horario.id_bloque');
+$queryMartes->execute(['docente'=>$docente]);
 $rowMartes=$queryMartes->fetchAll(PDO::FETCH_ASSOC);
 
 $queryMiercoles=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
@@ -160,8 +161,8 @@ FROM horario inner join docente on docente.id_docente=horario.id_docente
  inner join bloque on bloque.id_bloque=horario.id_bloque
  inner join ramo on ramo.id_ramo=horario.id_ramo
  inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:rol1 and horario.id_dia=3 order by horario.id_bloque');
-$queryMiercoles->execute(['rol1'=>$rol1]);
+ where horario.id_docente=:docente and horario.id_dia=3 order by horario.id_bloque');
+$queryMiercoles->execute(['docente'=>$docente]);
 $rowMiercoles=$queryMiercoles->fetchAll(PDO::FETCH_ASSOC);
 
 $queryJueves=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
@@ -170,8 +171,8 @@ FROM horario inner join docente on docente.id_docente=horario.id_docente
  inner join bloque on bloque.id_bloque=horario.id_bloque
  inner join ramo on ramo.id_ramo=horario.id_ramo
  inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:rol1 and horario.id_dia=4 order by horario.id_bloque');
-$queryJueves->execute(['rol1'=>$rol1]);
+ where horario.id_docente=:docente and horario.id_dia=4 order by horario.id_bloque');
+$queryJueves->execute(['docente'=>$docente]);
 $rowJueves=$queryJueves->fetchAll(PDO::FETCH_ASSOC);
 
 $queryViernes=$db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
@@ -180,8 +181,8 @@ FROM horario inner join docente on docente.id_docente=horario.id_docente
  inner join bloque on bloque.id_bloque=horario.id_bloque
  inner join ramo on ramo.id_ramo=horario.id_ramo
  inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:rol1 and horario.id_dia=5 order by horario.id_bloque');
-$queryViernes->execute(['rol1'=>$rol1]);
+ where horario.id_docente=:docente and horario.id_dia=5 order by horario.id_bloque');
+$queryViernes->execute(['docente'=>$docente]);
 $rowViernes=$queryViernes->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
