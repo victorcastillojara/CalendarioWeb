@@ -79,7 +79,21 @@ if(!isset($_SESSION['rol'])){
 
             <h1>Informacion</h1>
 
-            <textarea name="" id="" cols="100" rows="10"></textarea>
+            <?php
+
+            $db = new Database();
+
+            $queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_informacion=1');
+            $queryInfo->execute();
+            $rowInfo=$queryInfo->fetchAll(PDO::FETCH_ASSOC);
+
+            $mostrarTitulo=$rowInfo[0]['titulo'];
+            
+            ?>
+
+
+            <h3><?php echo $mostrarTitulo;?></h3>
+            <textarea name="descripcion" id="descripcion" cols="100" rows="10" disabled><?php echo $rowInfo[0]['descripcion'] ?></textarea>
         </div>
 
 

@@ -89,11 +89,30 @@ if (!isset($_SESSION['rol'])) {
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
+
+    <?php
+
+$db = new Database();
+
+$queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_informacion=1');
+    $queryInfo->execute();
+    $rowInfo=$queryInfo->fetchAll(PDO::FETCH_ASSOC);
+
+    $mostrarTitulo=$rowInfo[0]['titulo'];
+    
+    ?>
+
     <div align="center" style="margin-top:30px;">
+    <form action="info.php" method="post">
+    
+    <h1>Informacion</h1>
 
-        <h1>Informacion</h1>
+    Titulo: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
+    <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
+    <input type="submit"></input>
+    </form>
 
-        <textarea name="" id="" cols="100" rows="10"></textarea>
+        
     </div>
 
 
