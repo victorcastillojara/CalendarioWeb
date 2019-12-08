@@ -35,15 +35,19 @@ if($_POST['rut']!=null && $_POST['nombre']!=null && $_POST['apellido']!=null && 
         $query3->execute(['id_usuario'=>$id_usuario, 'rut'=>$rut]);
 
         if($query==true && $query1==true && $query2==true && $query3==true){
-            echo"Registro exitoso";
+            echo "<script>alert('Registro exitoso');</script>";
+            require('registro-docente.php');
         }else{
-            echo"Error";
+            echo "<script>alert('Error en el registro');</script>";
+            require('registro-docente.php');
         }
     }else{
-        echo"Rut ingresado no es válido, favor revisar si está correctamente escrito";
+        echo "<script>alert('Rut ingresado no es válido, favor revisar si está correctamente escrito');</script>";
+        require('registro-docente.php');
     }
 }else{
-    echo"Error: no debe dejar campos vacíos";
+    echo "<script>alert('Error: no debe dejar campos vacíos');</script>";
+    require('registro-docente.php');
 }
 
 

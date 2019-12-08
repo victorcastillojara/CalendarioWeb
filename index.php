@@ -46,7 +46,7 @@ if(isset($_POST['correo']) && isset($_POST['password'])){
             break;
         }
     }else{
-       echo"Usuario y/o contraseña incorrecto(s)";
+        echo '<script type="text/javascript">alert(\'Usuario y/o contraseña incorrecto(s)\');</script>';
     }
 }
 
