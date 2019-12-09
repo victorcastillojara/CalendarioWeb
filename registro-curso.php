@@ -94,16 +94,30 @@ if (!isset($_SESSION['rol'])) {
 
         <div align="center">
             <h1>Registro de Curso</h1>
-            <form action="#" method="post"><!-- HACER QUE REGISTRE EN TABLA CURSO (REGISTROCURSO.PHP ES LA PAGINA)-->
+            <form action="registrocurso.php" method="post"><!-- HACER QUE REGISTRE EN TABLA CURSO (REGISTROCURSO.PHP ES LA PAGINA)-->
                 <div class="center_div">
                     <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="curso">Curso</label>
-                            <input type="text" class="form-control" name="curso" id="curso" placeholder="Ingresar Curso">
-                        </div>
+                    <div class="form-group col-md-3">
+            <?php
+                include "conexion.php";
+
+                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+                ?>
+                <label for="curso">Seleccione curso</label>
+                <select id="curso" name="curso" class="form-control">
+                    <option value="0">Seleccione curso:</option>
+                    <?php
+                      $query = $mysqli -> query ("SELECT * FROM curso");
+                      while ($valores = mysqli_fetch_array($query)) {
+                        echo '<option value="'.$valores['id_curso'].'">'.$valores['curso'].' '.$valores['nivel'].'</option>';
+                      }
+                    ?>
+                </select>
+            </div>
                         <div class="form-group col-md-3">
                             <label for="nivel">Nivel Curso</label>
-                            <input type="text" name="nivel" class="form-control" id="nivel" placeholder="Nivel de Curso">
+                            <input type="text" name="nivel" class="form-control" id="nivel"  placeholder="Nivel de Curso">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="cant_alumnos">Cantidad de Alumnos</label>
@@ -111,7 +125,7 @@ if (!isset($_SESSION['rol'])) {
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar Curso</button>
+                <button type="submit" class="btn btn-primary" name="btn-enviar">Modificar Curso</button>
 
             </form>
 
