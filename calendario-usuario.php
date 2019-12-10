@@ -1,15 +1,15 @@
 <?php
 
-      include_once 'database.php';
+include_once 'database.php';
 
 session_start();
 
-if(!isset($_SESSION['rol'])){
+if (!isset($_SESSION['rol'])) {
+  header('location:login.php');
+} else {
+  if ($_SESSION['rol'] != 2) {
     header('location:login.php');
-}else{
-    if($_SESSION['rol']!=2){
-        header('location:login.php');
-    }
+  }
 }
 
 ?>
@@ -37,81 +37,84 @@ if(!isset($_SESSION['rol'])){
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  
+
   <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+
+
 
   <title>Calendario web Docente</title>
 </head>
 
 <body>
-    <header>    
-        <img class="top" src="img/login.jpg">
-    </header>
-    <?php
-    $usu=$_SESSION['usu'];
-    $db=new Database();
-    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu'=>$usu]);
+  <header>
+    <img class="top" src="img/login.jpg">
+  </header>
+  <?php
+  $usu = $_SESSION['usu'];
+  $db = new Database();
+  $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+  $query1->execute(['usu' => $usu]);
 
-    $row1=$query1->fetch(PDO::FETCH_NUM);
-    $rol1=$row1[0];
+  $row1 = $query1->fetch(PDO::FETCH_NUM);
+  $rol1 = $row1[0];
 
-    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1'=>$rol1]);
+  $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+  $query2->execute(['rol1' => $rol1]);
 
-    $row2=$query2->fetch(PDO::FETCH_NUM);
-    $nom=$row2[2];
-    $ape=$row2[3];
-    
-    ?>
+  $row2 = $query2->fetch(PDO::FETCH_NUM);
+  $nom = $row2[2];
+  $ape = $row2[3];
 
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC ;">
-        <div class="navegacion">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="menu-usuario.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
-                </li>
-            </ul>
-          </div>
-          <h5>Bienvenido: <?php echo $nom." ".$ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+  ?>
 
-    </nav>
-
-    <section>
-
-    
-
-        
-  <div class="container">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-7">
-        <br><br><div id="CalendarioWeb"></div>
-      </div>
-      <div class="col"></div>
+  <nav class="navbar navbar-light " style="background-color: #7BA8FF ;">
+    <div class="navegacion">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="menu-usuario.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+        </li>
+      </ul>
     </div>
-  </div>
-  
+    <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+    <a class="nav-link" href="logout.php">cerrar sesion</a>
+
+  </nav>
+
+  <section>
 
 
-    </section>
 
-    <footer>
 
-    </footer>
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-7">
+          <br><br>
+          <div id="CalendarioWeb"></div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <footer>
+
+  </footer>
 
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('#CalendarioWeb').fullCalendar({
         header: {
           left: 'today, prev,next',
@@ -119,13 +122,13 @@ if(!isset($_SESSION['rol'])){
           right: 'month,basicWeek, basicDay,agendaWeek,agendaDay, Miboton'
         },
 
-        dayClick: function (date, jsEvent, view) {
+        dayClick: function(date, jsEvent, view) {
 
           Limpiar();
           //desactivacion de botones sin evento
-          $('#btnAgregar').prop("disabled",false);
+          $('#btnAgregar').prop("disabled", false);
 
-          
+
           $('#txtFecha').val(date.format());
 
           $("#ModalEventos").modal();
@@ -134,10 +137,10 @@ if(!isset($_SESSION['rol'])){
         events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
 
 
-        eventClick: function (calEvent, jsEvent, view) {
-          
+        eventClick: function(calEvent, jsEvent, view) {
+
           //desactivacion de botones con evento
-          $('#btnAgregar').prop("disabled",true);
+          $('#btnAgregar').prop("disabled", true);
 
           //llamando datos para mostrar en el calendario
           $('#tituloEvento').html(calEvent.usuario);
@@ -164,7 +167,7 @@ if(!isset($_SESSION['rol'])){
           $("#ModalEventos").modal();
         },
         editable: true,
-        eventDrop: function (calEvent) {
+        eventDrop: function(calEvent) {
 
           $('#txtID').val(calEvent.id);
           $('#bloque').val(calEvent.bloque);
@@ -183,13 +186,11 @@ if(!isset($_SESSION['rol'])){
       });
 
     })
-
   </script>
 
 
   <!-- Modal(Agregar,modificar,eliminar )-->
-  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -202,30 +203,30 @@ if(!isset($_SESSION['rol'])){
 
           <input type="hidden" id="txtID" name="txtID">
           <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom." ".$ape ?>"> 
-          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">  
+          <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom . " " . $ape ?>">
+          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">
           <input type="hidden" id="txtHora" value="10:30" name="txtHora" class="form-control">
 
 
           <div class="form-row">
 
-          <div class="form-group col-md-5">
-            <?php
-                include "conexion.php";
+            <div class="form-group col-md-5">
+              <?php
+              include "conexion.php";
 
-                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+              $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
+              ?>
+              <label for="curso">Seleccione curso</label>
+              <select id="curso" class="form-control">
+                <option value="0">Seleccione curso:</option>
+                <?php
+                $query = $mysqli->query("SELECT * FROM curso");
+                while ($valores = mysqli_fetch_array($query)) {
+                  echo '<option value="' . $valores['curso'] . ' ' . $valores['nivel'] . '">' . $valores['curso'] . ' ' . $valores['nivel'] . '</option>';
+                }
                 ?>
-                <label for="curso">Seleccione curso</label>
-                <select id="curso" class="form-control">
-                    <option value="0">Seleccione curso:</option>
-                    <?php
-                      $query = $mysqli -> query ("SELECT * FROM curso");
-                      while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['curso'].' '.$valores['nivel'].'">'.$valores['curso'].' '.$valores['nivel'].'</option>';
-                      }
-                    ?>
-                </select>
+              </select>
             </div>
 
             <div class="form-group col-md-8">
@@ -236,21 +237,21 @@ if(!isset($_SESSION['rol'])){
               <!--<label>bloque</label>
               <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
               <?php
-                include "conexion.php";
+              include "conexion.php";
 
-                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+              $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-                ?>
-                <label for="bloque">Seleccione bloque</label>
-                <select id="bloque" name="boque" class="form-control">
+              ?>
+              <label for="bloque">Seleccione bloque</label>
+              <select id="bloque" name="boque" class="form-control">
                 <option value="0">Seleccione bloque</option>
-                    <?php
-                      $query = $mysqli -> query ("SELECT * FROM bloque");
-                      while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['bloque'].'">'.$valores['bloque'].'</option>';
-                      }
-                    ?>
-                </select>
+                <?php
+                $query = $mysqli->query("SELECT * FROM bloque");
+                while ($valores = mysqli_fetch_array($query)) {
+                  echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
+                }
+                ?>
+              </select>
 
             </div>
 
@@ -277,19 +278,18 @@ if(!isset($_SESSION['rol'])){
     </div>
   </div>
   <script>
-
     var NuevoEvento;
-    $('#btnAgregar').click(function () {
+    $('#btnAgregar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('agregar', NuevoEvento);
     });
 
-    $('#btnEliminar').click(function () {
+    $('#btnEliminar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('eliminar', NuevoEvento);
     });
 
-    $('#btnModificar').click(function () {
+    $('#btnModificar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('modificar', NuevoEvento);
     });
@@ -299,9 +299,9 @@ if(!isset($_SESSION['rol'])){
       NuevoEvento = {
         id: $('#txtID').val(),
         id_usuario: $('#id_usuario').val(),
-        usuario:$('#usuario').val(),
-        curso:$('#curso').val(),
-        bloque:$('#bloque').val(),
+        usuario: $('#usuario').val(),
+        curso: $('#curso').val(),
+        bloque: $('#bloque').val(),
         title: $('#txtTitulo').val(),
         start: $('#txtFecha').val() + " " + $('#txtHora').val(),
         color: $('#txtColor').val(),
@@ -319,7 +319,7 @@ if(!isset($_SESSION['rol'])){
         type: 'POST',
         url: 'eventos.php?accion=' + accion,
         data: objEvento,
-        success: function (msg) {
+        success: function(msg) {
           if (msg) {
             $('#CalendarioWeb').fullCalendar('refetchEvents');
 
@@ -333,7 +333,7 @@ if(!isset($_SESSION['rol'])){
           }
 
         },
-        error: function () {
+        error: function() {
           alert("hay un error");
         }
 
@@ -341,14 +341,14 @@ if(!isset($_SESSION['rol'])){
     }
 
     function Limpiar() {
-        $('#txtID').val('');
-        $('#txtTitulo').val('');
-        $('#bloque').val('');
-        $('#curso').val('');
-        $('#txtColor').val('');
-        $('#txtDescripcion').val('');
+      $('#txtID').val('');
+      $('#txtTitulo').val('');
+      $('#bloque').val('');
+      $('#curso').val('');
+      $('#txtColor').val('');
+      $('#txtDescripcion').val('');
 
-      }
+    }
   </script>
 </body>
 

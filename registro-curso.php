@@ -28,6 +28,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-form.css">
+    <link rel="stylesheet" href="css/prueba.css">
 
     <title>Registro Curso</title>
 </head>
@@ -54,7 +55,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -83,9 +84,11 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+
     </nav>
+
 
     <section>
         <div align="center">

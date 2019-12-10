@@ -1,27 +1,26 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    /*imagen completa (ocupe una de internet ya que no me toma la imagen "login2" ni "avengers" para probar.)
-    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7PaUxcY0MloCtP7PX28qu7tjKM_LifJeZ_IEjrfzyBSDBrVQi) no-repeat;
-    background-size: cover;*/
-    background-color: #EBF5FB;
+    background-image: url('../img/login.jpg');
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+     background-size: cover;
+     font-family: sans-serif;
 }
 
 .box-formulario {
     width: 280px;
     position: absolute;
     /*230px original, intento 1=150px*/
-    top: 75px;
-    left: 650px;
+    top: 50%;
+    left: 50%;
     -moz-border-radius: 10 px;
     -webkit-border-radius: 10px;
     padding: 30px;
-    margin-top: 100px;
-    margin-left: 100px;
     /* SE AGREGA AL INTENTO 1 al borrar "left:35%;"
     margin-left: 1000px;*/
     transform: translate(-50, -50);
+    -webkit-transform: translate(-50%,-50%);
     background: rgba(105, 156, 252, .7);
 }
 

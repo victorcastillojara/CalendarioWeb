@@ -27,6 +27,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
+    <link rel="stylesheet" href="css/prueba.css"> 
     <link rel="stylesheet" href="css/estilo-form.css">
 
     <title>Registro Docente</title>
@@ -54,7 +55,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -65,7 +66,7 @@ if (!isset($_SESSION['rol'])) {
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
+                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
                         <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
@@ -83,8 +84,11 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+
+    </nav>
+
 
     </nav>
 
@@ -137,6 +141,10 @@ if (!isset($_SESSION['rol'])) {
                         <div class="form-group col-md-3">
                             <label for="id_usuario">ID De Usuario</label>
                             <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="id_curso">ID De Curso</label>
+                            <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>

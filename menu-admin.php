@@ -29,6 +29,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
+    <link rel="stylesheet" href="css/prueba.css">
 
     <title>Menu Administrador</title>
 </head>
@@ -56,7 +57,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
