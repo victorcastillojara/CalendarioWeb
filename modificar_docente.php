@@ -2,6 +2,7 @@
 
 include_once 'database.php';
 
+
 session_start();
 
 if (!isset($_SESSION['rol'])) {
@@ -11,6 +12,30 @@ if (!isset($_SESSION['rol'])) {
         header('location:index.php');
     }
 }
+
+
+$consulta=ConsultarDocente($_GET['no']);
+
+function ConsultarDocente($id_docente_mod){
+    include 'conexion.php';
+    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+    $query = $mysqli->query("SELECT * FROM docente WHERE id_docente='".$id_docente_mod."'");
+    $valores = mysqli_fetch_assoc($query);
+    return [
+        $valores['rut'],
+        $valores['nombre'],
+        $valores['apellido'],
+        $valores['telefono'],
+        $valores['direccion'],
+        $valores['correo'],
+    ];
+    
+}
+
+    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,57 +127,54 @@ if (!isset($_SESSION['rol'])) {
         <div align="center">
             <h1>Registro de Docentes</h1>
             <!--Crear archivo php VerificarUsuario-->
-            <form action="registro.php" method="post">
+            <form action="modificacion.php" method="post">
+            <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
                 <div class="center_div">
+
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="rut">RUT Docente</label>
-                            <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
+                            <label for="nombre">RUT</label>
+                            <input type="text" name="rut" class="form-control" id="rut" placeholder="RUT" value="<?php echo $consulta[0] ?>">
                         </div>
-                        <button type="submit" class="btn btn-primary" name="btnBuscar">Buscar Docente</button>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="nombre">Nombre Docente</label>
-                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $consulta[1] ?>">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="apellido">Apellido(s) Docente</label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="<?php echo $consulta[2] ?>">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
+                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $consulta[3] ?>">
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="Email">Email</label>
-                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail">
+                    <div class="form-group col-md-3">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" value="<?php echo $consulta[4] ?>">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="contrasena">Contraseña</label>
                             <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail" value="<?php echo $consulta[5] ?>">
                         </div>
-
-                        
-                        <div class="form-group col-md-3">
-                            <label for="id_usuario">ID De Usuario</label>
-                            <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
-                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="id_curso">ID De Curso</label>
                             <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar Docente</button>
+                <button type="submit" class="btn btn-primary">Modificar datos</button>
 
             </form>
 

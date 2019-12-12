@@ -95,71 +95,46 @@ if (!isset($_SESSION['rol'])) {
 
     </nav>
 
-    <section>
+    <secton>
+    
+    <table border="2">
+    <thead>
+    <th>id</th>
+    <th>rut</th>
+    <th>nombre</th>
+    <th>apellido</th>
+    <th>telefono</th>
+    <th>direccion</th>
+    <th>correo</th>
+    <th>idusu</th>
+    <th><a href="registro-docente.php"><button>Registrar datos nuevos</button></a></th>
+    </thead>
+    
 
+    <?php
+    include "conexion.php";
+    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
+    $query = $mysqli->query("SELECT * FROM docente");
+    while ($valores = mysqli_fetch_assoc($query)) {
+        echo '<tr>';
+        echo '<td>'; echo $valores['id_docente']; echo '</td>';
+        echo '<td>'; echo $valores['rut']; echo '</td>';
+        echo '<td>'; echo $valores['nombre']; echo '</td>';
+        echo '<td>'; echo $valores['apellido']; echo '</td>';
+        echo '<td>'; echo $valores['telefono']; echo '</td>';
+        echo '<td>'; echo $valores['direccion']; echo '</td>';
+        echo '<td>'; echo $valores['correo']; echo '</td>';
+        echo '<td>'; echo $valores['id_usuario']; echo '</td>';
+        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button'>Modificar</button></a></td>";
+        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button'>Eliminar</button></a></td>";
+        echo '</tr>';
+        
+    }
+    ?>
 
-        <div align="center">
-            <h1>Registro de Docentes</h1>
-            <!--Crear archivo php VerificarUsuario-->
-            <form action="registro.php" method="post">
-                <div class="center_div">
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="rut">RUT Docente</label>
-                            <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="btnBuscar">Buscar Docente</button>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="nombre">Nombre Docente</label>
-                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="apellido">Apellido(s) Docente</label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="Email">Email</label>
-                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="contrasena">Contraseña</label>
-                            <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
-                        </div>
-
-                        
-                        <div class="form-group col-md-3">
-                            <label for="id_usuario">ID De Usuario</label>
-                            <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="id_curso">ID De Curso</label>
-                            <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Registrar Docente</button>
-
-            </form>
-
-        </div>
-
-
-
+    </table>
+    
     </section>
 
     <footer>
