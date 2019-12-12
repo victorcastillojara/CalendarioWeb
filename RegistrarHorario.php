@@ -77,6 +77,9 @@ if (!isset($_SESSION['rol'])) {
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="lista_docente.php">Docentes</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
                 </li>
                 <li class="nav-item dropdown">
