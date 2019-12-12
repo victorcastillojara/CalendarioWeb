@@ -69,11 +69,10 @@ if(isset($_POST['correo']) && isset($_POST['password'])){
     <title>Inicio de sesion</title>
 </head>
 
+
 <body>
     <!--Si se ocupa imagen completa borrar header-->
-    <header>    
-        <img class="top1" src="img/login.jpg">
-    </header>
+
     <div class="box-formulario">
         <img class="box" src="img/logo-delfin.png">  
         <h2>INICIO DE SESIÓN</h2>

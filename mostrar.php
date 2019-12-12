@@ -146,47 +146,6 @@ if (!isset($_SESSION['rol'])) {
 
     </section>
 
-    <secton>
-    
-    <table border="2">
-    <thead>
-    <th>id</th>
-    <th>rut</th>
-    <th>nombre</th>
-    <th>apellido</th>
-    <th>telefono</th>
-    <th>direccion</th>
-    <th>correo</th>
-    <th>idusu</th>
-    <th><a href="">Nuevo</a></th>
-    </thead>
-    
-
-    <?php
-    include "conexion.php";
-    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-
-    $query = $mysqli->query("SELECT * FROM docente");
-    while ($valores = mysqli_fetch_assoc($query)) {
-        echo '<tr>';
-        echo '<td>'; echo $valores['id_docente']; echo '</td>';
-        echo '<td>'; echo $valores['rut']; echo '</td>';
-        echo '<td>'; echo $valores['nombre']; echo '</td>';
-        echo '<td>'; echo $valores['apellido']; echo '</td>';
-        echo '<td>'; echo $valores['telefono']; echo '</td>';
-        echo '<td>'; echo $valores['direccion']; echo '</td>';
-        echo '<td>'; echo $valores['correo']; echo '</td>';
-        echo '<td>'; echo $valores['id_usuario']; echo '</td>';
-        echo "<td><a href=''><button type='button'>Modificar</button></a></td>";
-        echo "<td><a href=''><button type='button'>Eliminar</button></a></td>";
-        echo '</tr>';
-    }
-    ?>
-
-    </table>
-    
-    </section>
-
     <footer>
 
     </footer>

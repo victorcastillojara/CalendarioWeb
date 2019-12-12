@@ -131,7 +131,7 @@ if(!isset($_SESSION['rol'])){
           $("#ModalEventos").modal();
         },
 
-        events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
+        events: 'http://localhost/proyecto/proyecto/CalendarioWeb/eventos.php',
 
 
         eventClick: function (calEvent, jsEvent, view) {
