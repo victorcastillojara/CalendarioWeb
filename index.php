@@ -2,7 +2,6 @@
 
 include_once 'database.php';
 
-session_start();
 
 if(isset($_GET['cerrar_sesion'])){
     session_unset();

@@ -40,13 +40,14 @@ body {
     padding: 8px 0;
     margin: 8px 0;
     border-bottom: 1px solid;
+   
 }
 
 .texto i {
     width: 26px;
     float: left;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .texto input {

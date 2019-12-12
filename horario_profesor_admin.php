@@ -2,7 +2,7 @@
 
 include_once 'database.php';
 
-session_start();
+
 
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
@@ -78,6 +78,9 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cursos
@@ -141,52 +144,52 @@ if (!isset($_SESSION['rol'])) {
                         <?php
                         $db = new Database();
                         $queryLunes = $db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
-FROM horario inner join docente on docente.id_docente=horario.id_docente 
- inner join curso on curso.id_curso=horario.id_curso
- inner join bloque on bloque.id_bloque=horario.id_bloque
- inner join ramo on ramo.id_ramo=horario.id_ramo
- inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:docente and dia="Lunes" order by horario.id_bloque');
+                        FROM horario inner join docente on docente.id_docente=horario.id_docente 
+                        inner join curso on curso.id_curso=horario.id_curso
+                        inner join bloque on bloque.id_bloque=horario.id_bloque
+                        inner join ramo on ramo.id_ramo=horario.id_ramo
+                        inner join dia on dia.id_dia=horario.id_dia
+                        where horario.id_docente=:docente and dia="Lunes" order by horario.id_bloque');
                         $queryLunes->execute(['docente' => $docente]);
                         $rowLunes = $queryLunes->fetchAll(PDO::FETCH_ASSOC);
 
                         $queryMartes = $db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
-FROM horario inner join docente on docente.id_docente=horario.id_docente 
- inner join curso on curso.id_curso=horario.id_curso
- inner join bloque on bloque.id_bloque=horario.id_bloque
- inner join ramo on ramo.id_ramo=horario.id_ramo
- inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:docente and horario.id_dia=2 order by horario.id_bloque');
+                        FROM horario inner join docente on docente.id_docente=horario.id_docente 
+                        inner join curso on curso.id_curso=horario.id_curso
+                        inner join bloque on bloque.id_bloque=horario.id_bloque
+                        inner join ramo on ramo.id_ramo=horario.id_ramo
+                        inner join dia on dia.id_dia=horario.id_dia
+                        where horario.id_docente=:docente and horario.id_dia=2 order by horario.id_bloque');
                         $queryMartes->execute(['docente' => $docente]);
                         $rowMartes = $queryMartes->fetchAll(PDO::FETCH_ASSOC);
 
                         $queryMiercoles = $db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
-FROM horario inner join docente on docente.id_docente=horario.id_docente 
- inner join curso on curso.id_curso=horario.id_curso
- inner join bloque on bloque.id_bloque=horario.id_bloque
- inner join ramo on ramo.id_ramo=horario.id_ramo
- inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:docente and horario.id_dia=3 order by horario.id_bloque');
+                        FROM horario inner join docente on docente.id_docente=horario.id_docente 
+                        inner join curso on curso.id_curso=horario.id_curso
+                        inner join bloque on bloque.id_bloque=horario.id_bloque
+                        inner join ramo on ramo.id_ramo=horario.id_ramo
+                        inner join dia on dia.id_dia=horario.id_dia
+                        where horario.id_docente=:docente and horario.id_dia=3 order by horario.id_bloque');
                         $queryMiercoles->execute(['docente' => $docente]);
                         $rowMiercoles = $queryMiercoles->fetchAll(PDO::FETCH_ASSOC);
 
                         $queryJueves = $db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
-FROM horario inner join docente on docente.id_docente=horario.id_docente 
- inner join curso on curso.id_curso=horario.id_curso
- inner join bloque on bloque.id_bloque=horario.id_bloque
- inner join ramo on ramo.id_ramo=horario.id_ramo
- inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:docente and horario.id_dia=4 order by horario.id_bloque');
+                        FROM horario inner join docente on docente.id_docente=horario.id_docente 
+                        inner join curso on curso.id_curso=horario.id_curso
+                        inner join bloque on bloque.id_bloque=horario.id_bloque
+                        inner join ramo on ramo.id_ramo=horario.id_ramo
+                        inner join dia on dia.id_dia=horario.id_dia
+                        where horario.id_docente=:docente and horario.id_dia=4 order by horario.id_bloque');
                         $queryJueves->execute(['docente' => $docente]);
                         $rowJueves = $queryJueves->fetchAll(PDO::FETCH_ASSOC);
 
                         $queryViernes = $db->connect()->prepare('SELECT dia.dia,docente.apellido,docente.nombre,curso.curso,bloque.bloque,ramo.ramo
-FROM horario inner join docente on docente.id_docente=horario.id_docente 
- inner join curso on curso.id_curso=horario.id_curso
- inner join bloque on bloque.id_bloque=horario.id_bloque
- inner join ramo on ramo.id_ramo=horario.id_ramo
- inner join dia on dia.id_dia=horario.id_dia
- where horario.id_docente=:docente and horario.id_dia=5 order by horario.id_bloque');
+                        FROM horario inner join docente on docente.id_docente=horario.id_docente 
+                        inner join curso on curso.id_curso=horario.id_curso
+                        inner join bloque on bloque.id_bloque=horario.id_bloque
+                        inner join ramo on ramo.id_ramo=horario.id_ramo
+                        inner join dia on dia.id_dia=horario.id_dia
+                        where horario.id_docente=:docente and horario.id_dia=5 order by horario.id_bloque');
                         $queryViernes->execute(['docente' => $docente]);
                         $rowViernes = $queryViernes->fetchAll(PDO::FETCH_ASSOC);
                         ?>

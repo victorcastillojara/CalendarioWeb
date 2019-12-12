@@ -2,7 +2,6 @@
 
 include_once 'database.php';
 
-session_start();
 
 if(!isset($_SESSION['rol'])){
     header('location:login.php');
@@ -88,6 +87,9 @@ if(!isset($_SESSION['rol'])){
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

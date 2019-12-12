@@ -2,7 +2,7 @@
 include_once 'conexion.php';
 include_once 'database.php';
 
-session_start();
+
 
 if (isset($_POST['btn-enviar'])) {
 
@@ -18,4 +18,5 @@ if (isset($_POST['btn-enviar'])) {
     header("Location:registro-curso.php");
 
 }
+$conn->close();
 ?>

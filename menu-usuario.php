@@ -2,7 +2,6 @@
 
 include_once 'database.php';
 
-session_start();
 
 if(!isset($_SESSION['rol'])){
     header('location:index.php');
@@ -30,7 +29,11 @@ if(!isset($_SESSION['rol'])){
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="css/descripcion.css">
+=======
     <link rel="stylesheet" href="css/prueba.css">
+>>>>>>> 913ea387895ce813cd59c1bb1dddb77ddbbf31d9
 
     <title>Menu Docente</title>
 </head>
@@ -94,7 +97,7 @@ if(!isset($_SESSION['rol'])){
 
 
             <h3><?php echo $mostrarTitulo;?></h3>
-            <textarea name="descripcion" id="descripcion" cols="100" rows="10" disabled><?php echo $rowInfo[0]['descripcion'] ?></textarea>
+            <textarea name="descripcion" id="descripcion" class="descripcion" cols="100" rows="10" disabled><?php echo $rowInfo[0]['descripcion'] ?></textarea>
         </div>
 
 
