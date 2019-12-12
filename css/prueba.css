@@ -1,0 +1,9 @@
+body {
+    background-image: url(https://i1.wp.com/www.atmosfera.unam.mx/wp-content/uploads/2017/05/smooth-ice.jpg?ssl=1);
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: sans-serif;
+}

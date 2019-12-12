@@ -2,7 +2,6 @@
 
 include_once 'database.php';
 
-session_start();
 
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
@@ -29,6 +28,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
+    <link rel="stylesheet" href="css/prueba.css">
 
     <title>Menu Administrador</title>
 </head>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -73,6 +73,9 @@ if (!isset($_SESSION['rol'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,13 +1,11 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
     background-image: url('../img/login.jpg');
-    background-repeat: no-repeat;
+    min-height: 100%;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
-    background-color: #EBF5FB;
+    background-repeat: no-repeat;
+     background-size: cover;
+     font-family: sans-serif;
 }
 
 .box-formulario {
@@ -19,11 +17,10 @@ body {
     -moz-border-radius: 10 px;
     -webkit-border-radius: 10px;
     padding: 30px;
-  
     /* SE AGREGA AL INTENTO 1 al borrar "left:35%;"
     margin-left: 1000px;*/
     transform: translate(-50, -50);
-    -webkit-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%,-50%);
     background: rgba(105, 156, 252, .7);
 }
 

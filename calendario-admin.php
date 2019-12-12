@@ -2,7 +2,6 @@
 
 include_once 'database.php';
 
-session_start();
 
 if(!isset($_SESSION['rol'])){
     header('location:login.php');
@@ -42,6 +41,7 @@ if(!isset($_SESSION['rol'])){
   <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+  
 
   <title>Calendario web</title>
 </head>
@@ -67,7 +67,7 @@ if(!isset($_SESSION['rol'])){
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #6A9CFC">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -78,12 +78,15 @@ if(!isset($_SESSION['rol'])){
                         Horarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
+                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
                         <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,8 +99,8 @@ if(!isset($_SESSION['rol'])){
                 </li>
             </ul>
         </div>
-        <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
 
