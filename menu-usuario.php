@@ -30,6 +30,7 @@ if(!isset($_SESSION['rol'])){
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
+    <link rel="stylesheet" href="css/descripcion.css">
 
     <title>Menu Docente</title>
 </head>
@@ -93,7 +94,7 @@ if(!isset($_SESSION['rol'])){
 
 
             <h3><?php echo $mostrarTitulo;?></h3>
-            <textarea name="descripcion" id="descripcion" cols="100" rows="10" disabled><?php echo $rowInfo[0]['descripcion'] ?></textarea>
+            <textarea name="descripcion" id="descripcion" class="descripcion" cols="100" rows="10" disabled><?php echo $rowInfo[0]['descripcion'] ?></textarea>
         </div>
 
 

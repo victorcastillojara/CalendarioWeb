@@ -119,7 +119,7 @@ $queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_infor
     </section>
 
     <footer>
-
+in
     </footer>
 </body>
 
