@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2019 a las 22:38:44
+-- Tiempo de generación: 13-12-2019 a las 05:04:28
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -33,6 +33,17 @@ CREATE TABLE `bloque` (
   `bloque` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `bloque`
+--
+
+INSERT INTO `bloque` (`id_bloque`, `bloque`) VALUES
+(1, '8:00 a 9:30'),
+(2, '9:45 a 11:15'),
+(3, '11:30 a 12:45'),
+(4, '14:00 a 15:30'),
+(5, '15:45 a 17:00');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +57,36 @@ CREATE TABLE `curso` (
   `cant_alumnos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`id_curso`, `curso`, `nivel`, `cant_alumnos`) VALUES
+(1, 'Primero A', 'Básico', 0),
+(2, 'Primero B', 'Básico', 0),
+(3, 'Segundo A', 'Básico', 0),
+(4, 'Segundo B', 'Básico', 0),
+(5, 'Tercero A', 'Básico', 0),
+(6, 'Tercero B', 'Básico', 0),
+(7, 'Cuarto A', 'Básico', 0),
+(8, 'Cuarto B', 'Básico', 0),
+(9, 'Quinto A', 'Básico', 0),
+(10, 'Quinto B', 'Básico', 0),
+(11, 'Sexto A', 'Básico', 0),
+(12, 'Sexto B', 'Básico', 0),
+(13, 'Séptimo A', 'Básico', 0),
+(14, 'Séptimo B', 'Básico', 0),
+(15, 'Octavo A', 'Básico', 0),
+(16, 'Octavo B', 'Básico', 0),
+(17, 'Primero A', 'Media', 0),
+(18, 'Primero B', 'Media', 0),
+(19, 'Segundo A', 'Media', 0),
+(20, 'Segundo B', 'Media', 0),
+(21, 'Tercero A', 'Media', 0),
+(22, 'Tercero B', 'Media', 0),
+(23, 'Cuarto A', 'Media', 0),
+(24, 'Cuarto B', 'Media', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +97,17 @@ CREATE TABLE `dia` (
   `id_dia` int(11) NOT NULL,
   `dia` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `dia`
+--
+
+INSERT INTO `dia` (`id_dia`, `dia`) VALUES
+(1, 'Lunes'),
+(2, 'Martes'),
+(3, 'Miércoles'),
+(4, 'Jueves'),
+(5, 'Viernes');
 
 -- --------------------------------------------------------
 
@@ -74,6 +126,13 @@ CREATE TABLE `docente` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `docente`
+--
+
+INSERT INTO `docente` (`id_docente`, `rut`, `nombre`, `apellido`, `telefono`, `direccion`, `correo`, `id_usuario`) VALUES
+(1, 'null', 'Sin', 'Profesor', 0, 'null', 'null', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +143,26 @@ CREATE TABLE `docente/curso` (
   `id_docente` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(255) NOT NULL,
+  `usuario` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `curso` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `bloque` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish2_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `textColor` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -99,6 +178,25 @@ CREATE TABLE `horario` (
   `id_docente` int(11) NOT NULL,
   `id_ramo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `informaciones`
+--
+
+CREATE TABLE `informaciones` (
+  `id_informacion` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `descripcion` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `informaciones`
+--
+
+INSERT INTO `informaciones` (`id_informacion`, `titulo`, `descripcion`) VALUES
+(1, 'Título', 'Descripción');
 
 -- --------------------------------------------------------
 
@@ -122,6 +220,14 @@ CREATE TABLE `roles` (
   `rol` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id_rol`, `rol`) VALUES
+(1, 'admin'),
+(2, 'docente');
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +240,13 @@ CREATE TABLE `usuario` (
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `correo`, `password`, `id_rol`) VALUES
+(1, 'admin', 'AdministradorCJC', 1);
 
 --
 -- Índices para tablas volcadas
@@ -171,6 +284,12 @@ ALTER TABLE `docente/curso`
   ADD KEY `fk_docente_docente` (`id_docente`);
 
 --
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `horario`
 --
 ALTER TABLE `horario`
@@ -180,6 +299,12 @@ ALTER TABLE `horario`
   ADD KEY `fk_horario_curso` (`id_curso`),
   ADD KEY `fk_horario_docente` (`id_docente`),
   ADD KEY `fk_horario_ramo` (`id_ramo`);
+
+--
+-- Indices de la tabla `informaciones`
+--
+ALTER TABLE `informaciones`
+  ADD PRIMARY KEY (`id_informacion`);
 
 --
 -- Indices de la tabla `ramo`
@@ -208,31 +333,43 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bloque`
 --
 ALTER TABLE `bloque`
-  MODIFY `id_bloque` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bloque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `dia`
 --
 ALTER TABLE `dia`
-  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
   MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `informaciones`
+--
+ALTER TABLE `informaciones`
+  MODIFY `id_informacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ramo`
@@ -244,13 +381,13 @@ ALTER TABLE `ramo`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
