@@ -1,6 +1,7 @@
 <?php
 
 include_once 'database.php';
+include_once 'insertarCurso.php';
 
 
 
@@ -101,7 +102,19 @@ if (!isset($_SESSION['rol'])) {
 
     <section>
         <div align="center" style="margin-left: 40px;margin-right: 40px ">
-            <h1>Registro de horario</h1>
+        
+            <h1>Registro de horario</h1><?php if (isset($_SESSION['mensaje'])) { ?>
+                <!--Alerta de registro-->
+                <div class="alert alert-<?= $_SESSION['color'] ?> alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['mensaje'] ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            <?php 
+            } ?>
+            <!--fin alerta de registro-->
             
             <form action="insertarCurso.php" method="post">
                 <div class="center_div">

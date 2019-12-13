@@ -13,7 +13,12 @@ if (isset($_POST['btn-Registrar'])) {
     $sql=$db->connect()->prepare("INSERT INTO horario(id_dia,id_bloque,id_curso,id_docente,id_ramo) 
     VALUES('$dia','$bloque','$curso','$docente','$ramo')");
 
+    $sql1=$db->connect()->prepare("INSERT INTO docente_curso(id_docente,id_curso) 
+                                VALUES('$docente','$curso')");
+
     $sql->execute();  
+    $sql1->execute(); 
+
     if (!$sql) {
        die("fallo el registro");
     }
@@ -21,8 +26,4 @@ if (isset($_POST['btn-Registrar'])) {
     $_SESSION['color']='success';
 
     header("Location:RegistrarHorario.php");
-
-    
 }
-
-?>

@@ -99,7 +99,7 @@ if (!isset($_SESSION['rol'])) {
     </nav>
 
     <secton>
-    
+    <div align="center" style="margin-top: 30px;">
     <table border="2">
     <thead>
     <th>id</th>
@@ -137,6 +137,7 @@ if (!isset($_SESSION['rol'])) {
     ?>
 
     </table>
+    </div>
     
     </section>
 
