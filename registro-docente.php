@@ -22,10 +22,9 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
-    <link rel="stylesheet" href="css/prueba.css"> 
+    <link rel="stylesheet" href="css/prueba.css">
     <link rel="stylesheet" href="css/estilo-form.css">
 
     <title>Registro Docente</title>
@@ -74,27 +73,25 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cursos
+                        Registrar
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
                         <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
+                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
 
 
-    </nav>
+
 
     <section>
 
@@ -106,13 +103,13 @@ if (!isset($_SESSION['rol'])) {
             <form action="registro.php" method="post">
                 <div class="center_div">
                     <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-3 bc">
                             <label for="rut">RUT Docente</label>
                             <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
+                            <button type="submit" class="btn btn-primary" name="btnBuscar">Buscar Docente</button>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="btnBuscar">Buscar Docente</button>
                     </div>
-
+                    
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="nombre">Nombre Docente</label>
@@ -141,15 +138,16 @@ if (!isset($_SESSION['rol'])) {
                             <label for="direccion">Direccion</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
                         </div>
+                    </div>
 
-                        
+                    <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="id_usuario">ID De Usuario</label>
                             <input type="text" class="form-control" name="id_usuario" id="id_usuario" placeholder="ID_USUARIO">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="id_curso">ID De Curso</label>
-                            <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
+                            <input type="text" class="form-control" name="id_curso" id="id_curso" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>
