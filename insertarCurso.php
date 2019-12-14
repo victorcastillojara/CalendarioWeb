@@ -15,9 +15,9 @@ if (isset($_POST['btn-Registrar'])) {
 
     $sql1=$db->connect()->prepare("INSERT INTO docente_curso(id_docente,id_curso) 
                                 VALUES('$docente','$curso')");
-
-    $sql->execute();  
+    
     $sql1->execute(); 
+    $sql->execute();  
 
     if (!$sql) {
        die("fallo el registro");

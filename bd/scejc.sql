@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2019 a las 05:04:28
+-- Tiempo de generación: 14-12-2019 a las 03:29:58
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -62,30 +62,31 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `curso`, `nivel`, `cant_alumnos`) VALUES
-(1, 'Primero A', 'Básico', 0),
-(2, 'Primero B', 'Básico', 0),
-(3, 'Segundo A', 'Básico', 0),
-(4, 'Segundo B', 'Básico', 0),
-(5, 'Tercero A', 'Básico', 0),
-(6, 'Tercero B', 'Básico', 0),
-(7, 'Cuarto A', 'Básico', 0),
-(8, 'Cuarto B', 'Básico', 0),
-(9, 'Quinto A', 'Básico', 0),
-(10, 'Quinto B', 'Básico', 0),
-(11, 'Sexto A', 'Básico', 0),
-(12, 'Sexto B', 'Básico', 0),
-(13, 'Séptimo A', 'Básico', 0),
-(14, 'Séptimo B', 'Básico', 0),
-(15, 'Octavo A', 'Básico', 0),
-(16, 'Octavo B', 'Básico', 0),
-(17, 'Primero A', 'Media', 0),
-(18, 'Primero B', 'Media', 0),
-(19, 'Segundo A', 'Media', 0),
-(20, 'Segundo B', 'Media', 0),
-(21, 'Tercero A', 'Media', 0),
-(22, 'Tercero B', 'Media', 0),
-(23, 'Cuarto A', 'Media', 0),
-(24, 'Cuarto B', 'Media', 0);
+(1, 'Sin Curso', 'null', 0),
+(2, 'Primero A', 'Básico', 0),
+(3, 'Primero B', 'Básico', 0),
+(4, 'Segundo A', 'Básico', 0),
+(5, 'Segundo B', 'Básico', 0),
+(6, 'Tercero A', 'Básico', 0),
+(7, 'Tercero B', 'Básico', 0),
+(8, 'Cuarto A', 'Básico', 0),
+(9, 'Cuarto B', 'Básico', 0),
+(10, 'Quinto A', 'Básico', 0),
+(11, 'Quinto B', 'Básico', 0),
+(12, 'Sexto A', 'Básico', 0),
+(13, 'Sexto B', 'Básico', 0),
+(14, 'Séptimo A', 'Básico', 0),
+(15, 'Séptimo B', 'Básico', 0),
+(16, 'Octavo A', 'Básico', 0),
+(17, 'Octavo B', 'Básico', 0),
+(18, 'Primero A', 'Media', 0),
+(19, 'Primero B', 'Media', 0),
+(20, 'Segundo A', 'Media', 0),
+(21, 'Segundo B', 'Media', 0),
+(22, 'Tercero A', 'Media', 0),
+(23, 'Tercero B', 'Media', 0),
+(24, 'Cuarto A', 'Media', 0),
+(25, 'Cuarto B', 'Media', 0);
 
 -- --------------------------------------------------------
 
@@ -136,10 +137,10 @@ INSERT INTO `docente` (`id_docente`, `rut`, `nombre`, `apellido`, `telefono`, `d
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `docente/curso`
+-- Estructura de tabla para la tabla `docente_curso`
 --
 
-CREATE TABLE `docente/curso` (
+CREATE TABLE `docente_curso` (
   `id_docente` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -209,6 +210,55 @@ CREATE TABLE `ramo` (
   `ramo` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `ramo`
+--
+
+INSERT INTO `ramo` (`id_ramo`, `ramo`) VALUES
+(1, 'Lenguaje'),
+(2, 'Matemática'),
+(3, 'Inglés'),
+(4, 'Historia'),
+(5, 'Filosofía'),
+(6, 'Biología'),
+(7, 'Física'),
+(8, 'Química'),
+(9, 'Ciencias Naturales'),
+(10, 'Artes Visuales'),
+(11, 'Artística'),
+(12, 'Tecnología'),
+(13, 'Música'),
+(14, 'Educación Física'),
+(15, 'Religión'),
+(16, 'Diferenciado de Lenguaje'),
+(17, 'Diferenciado de Matemática'),
+(18, 'Diferenciado de Educación Física'),
+(19, 'Ciencias para la ciudadanía'),
+(20, 'Formación cuidadana'),
+(21, 'Diferenciado de Historia'),
+(22, 'Diferenciado de Ciencias'),
+(23, 'Vida saludable'),
+(24, 'Manejo'),
+(25, 'Análisis Físico Químico'),
+(26, 'Procedimientos'),
+(27, 'Fabricación'),
+(28, 'Emprendimiento'),
+(29, 'Medio ambiente'),
+(30, 'Toma de muestras'),
+(31, 'Mantenimiento'),
+(32, 'Preparación de muestras'),
+(33, 'Análisis instrumental'),
+(34, 'Técnicas de laboratorio'),
+(35, 'Taller de Lenguaje'),
+(36, 'Taller de Matemática'),
+(37, 'Taller de Computación'),
+(38, 'Taller de Ecología'),
+(39, 'Taller de Teatro'),
+(40, 'Taller de Geometría'),
+(41, 'Taller de vida saludable'),
+(42, 'Taller de formación ciudadana'),
+(43, 'Taller de reciclaje');
+
 -- --------------------------------------------------------
 
 --
@@ -277,9 +327,9 @@ ALTER TABLE `docente`
   ADD PRIMARY KEY (`id_docente`);
 
 --
--- Indices de la tabla `docente/curso`
+-- Indices de la tabla `docente_curso`
 --
-ALTER TABLE `docente/curso`
+ALTER TABLE `docente_curso`
   ADD KEY `fk_curso_curso` (`id_curso`),
   ADD KEY `fk_docente_docente` (`id_docente`);
 
@@ -339,7 +389,7 @@ ALTER TABLE `bloque`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `dia`
@@ -375,7 +425,7 @@ ALTER TABLE `informaciones`
 -- AUTO_INCREMENT de la tabla `ramo`
 --
 ALTER TABLE `ramo`
-  MODIFY `id_ramo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ramo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -394,9 +444,9 @@ ALTER TABLE `usuario`
 --
 
 --
--- Filtros para la tabla `docente/curso`
+-- Filtros para la tabla `docente_curso`
 --
-ALTER TABLE `docente/curso`
+ALTER TABLE `docente_curso`
   ADD CONSTRAINT `fk_curso_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_docente_docente` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -405,9 +455,9 @@ ALTER TABLE `docente/curso`
 --
 ALTER TABLE `horario`
   ADD CONSTRAINT `fk_horario_bloque` FOREIGN KEY (`id_bloque`) REFERENCES `bloque` (`id_bloque`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_horario_curso` FOREIGN KEY (`id_curso`) REFERENCES `docente/curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_horario_curso` FOREIGN KEY (`id_curso`) REFERENCES `docente_curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_horario_dia` FOREIGN KEY (`id_dia`) REFERENCES `dia` (`id_dia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_horario_docente` FOREIGN KEY (`id_docente`) REFERENCES `docente/curso` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_horario_docente` FOREIGN KEY (`id_docente`) REFERENCES `docente_curso` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_horario_ramo` FOREIGN KEY (`id_ramo`) REFERENCES `ramo` (`id_ramo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

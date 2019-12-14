@@ -196,43 +196,43 @@ if (!isset($_SESSION['rol'])) {
 
                         <tr>
                             <th scope="row">8:00 a 9:15</th>
-                            <td><?php if ($rowLunes != null && $rowLunes[0]['bloque'] == "8:00 a 9:30") echo $rowLunes[0]['curso']; ?></td>
-                            <td><?php if ($rowMartes != null && $rowMartes[0]['bloque'] == "8:00 a 9:30") echo $rowMartes[0]['curso']; ?></td>
-                            <td><?php if ($rowMiercoles != null && $rowMiercoles[0]['bloque'] == "8:00 a 9:30") echo $rowMiercoles[0]['curso']; ?></td>
-                            <td><?php if ($rowJueves != null && $rowJueves[0]['bloque'] == "8:00 a 9:30") echo $rowJueves[0]['curso']; ?></td>
-                            <td><?php if ($rowViernes != null && $rowViernes[0]['bloque'] == "8:00 a 9:30") echo $rowViernes[0]['curso']; ?></td>
+                            <td><?php if (isset($rowLunes[0]) != null && $rowLunes[0]['bloque'] == "8:00 a 9:30"){ echo $rowLunes[0]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMartes[0]) != null && $rowMartes[0]['bloque'] == "8:00 a 9:30"){ echo $rowMartes[0]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMiercoles[0]) != null && $rowMiercoles[0]['bloque'] == "8:00 a 9:30"){ echo $rowMiercoles[0]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowJueves[0]) != null && $rowJueves[0]['bloque'] == "8:00 a 9:30"){ echo $rowJueves[0]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowViernes[0]) != null && $rowViernes[0]['bloque'] == "8:00 a 9:30"){ echo $rowViernes[0]['curso']; }else{ echo "No hay registros!"; } ?></td>
                         </tr>
                         <tr>
                             <th scope="row">9:30 a 11:15</th>
-                            <td><?php if ($rowLunes != null && $rowLunes[1]['bloque'] == "9:30 a 11:15") echo $rowLunes[1]['curso']; ?></td>
-                            <td><?php if ($rowMartes != null && $rowMartes[1]['bloque'] == "9:30 a 11:15") echo $rowMartes[1]['curso']; ?></td>
-                            <td><?php if ($rowMiercoles != null && $rowMiercoles[1]['bloque'] == "9:30 a 11:15") echo $rowMiercoles[1]['curso']; ?></td>
-                            <td><?php if ($rowJueves != null && $rowJueves[1]['bloque'] == "9:30 a 11:15") echo $rowJueves[1]['curso']; ?></td>
-                            <td><?php if ($rowViernes != null && $rowViernes[1]['bloque'] == "9:30 a 11:15") echo $rowViernes[1]['curso']; ?></td>
+                            <td><?php if (isset($rowLunes[1]) != null && $rowLunes[1]['bloque'] == "9:45 a 11:15"){ echo $rowLunes[1]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMartes[1]) != null && $rowMartes[1]['bloque'] == "9:45 a 11:15"){ echo $rowMartes[1]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMiercoles[1]) != null && $rowMiercoles[1]['bloque'] == "9:45 a 11:15"){ echo $rowMiercoles[1]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowJueves[1]) != null && $rowJueves[1]['bloque'] == "9:45 a 11:15"){ echo $rowJueves[1]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowViernes[1]) != null && $rowViernes[1]['bloque'] == "9:45 a 11:15"){ echo $rowViernes[1]['curso']; }else{ echo "No hay registros!"; } ?></td>
                         </tr>
                         <tr>
                             <th scope="row">11:30 a 12:45</th>
-                            <td><?php if ($rowLunes != null && $rowLunes[2]['bloque'] == "11:30 a 12:45") echo $rowLunes[2]['curso']; ?></td>
-                            <td><?php if ($rowMartes != null && $rowMartes[2]['bloque'] == "11:30 a 12:45") echo $rowMartes[2]['curso']; ?></td>
-                            <td><?php if ($rowMiercoles != null && $rowMiercoles[2]['bloque'] == "11:30 a 12:45") echo $rowMiercoles[2]['curso']; ?></td>
-                            <td><?php if ($rowJueves != null && $rowJueves[2]['bloque'] == "11:30 a 12:45") echo $rowJueves[2]['curso']; ?></td>
-                            <td><?php if ($rowViernes != null && $rowViernes[2]['bloque'] == "11:30 a 12:45") echo $rowViernes[2]['curso']; ?></td>
+                            <td><?php if (isset($rowLunes[2]) != null && $rowLunes[2]['bloque'] == "11:30 a 12:45"){ echo $rowLunes[2]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMartes[2]) != null && $rowMartes[2]['bloque'] == "11:30 a 12:45"){ echo $rowMartes[2]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMiercoles[2]) != null && $rowMiercoles[2]['bloque'] == "11:30 a 12:45"){ echo $rowMiercoles[2]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowJueves[2]) != null && $rowJueves[2]['bloque'] == "11:30 a 12:45"){ echo $rowJueves[2]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowViernes[2]) != null && $rowViernes[2]['bloque'] == "11:30 a 12:45"){ echo $rowViernes[2]['curso']; }else{ echo "No hay registros!"; } ?></td>
                         </tr>
                         <tr>
                             <th scope="row">14:00 a 15:30</th>
-                            <td><?php if ($rowLunes != null && $rowLunes[3]['bloque'] == "14:00 a 15:30") echo $rowLunes[3]['curso']; ?></td>
-                            <td><?php if ($rowMartes != null && $rowMartes[3]['bloque'] == "14:00 a 15:30") echo $rowMartes[3]['curso']; ?></td>
-                            <td><?php if ($rowMiercoles != null && $rowMiercoles[3]['bloque'] == "14:00 a 15:30") echo $rowMiercoles[3]['curso']; ?></td>
-                            <td><?php if ($rowJueves != null && $rowJueves[3]['bloque'] == "14:00 a 15:30") echo $rowJueves[3]['curso']; ?></td>
-                            <td><?php if ($rowViernes != null && $rowViernes[3]['bloque'] == "14:00 a 15:30") echo $rowViernes[3]['curso']; ?></td>
+                            <td><?php if (isset($rowLunes[3]) != null && $rowLunes[3]['bloque'] == "14:00 a 15:30"){ echo $rowLunes[3]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMartes[3]) != null && $rowMartes[3]['bloque'] == "14:00 a 15:30"){ echo $rowMartes[3]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMiercoles[3]) != null && $rowMiercoles[3]['bloque'] == "14:00 a 15:30"){ echo $rowMiercoles[3]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowJueves[3]) != null && $rowJueves[3]['bloque'] == "14:00 a 15:30"){ echo $rowJueves[3]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowViernes[3]) != null && $rowViernes[3]['bloque'] == "14:00 a 15:30"){ echo $rowViernes[3]['curso']; }else{ echo "No hay registros!"; } ?></td>
                         </tr>
                         <tr>
                             <th scope="row">15:45 a 17:00</th>
-                            <td><?php if ($rowLunes != null && $rowLunes[4]['bloque'] == "15:30 a 17:00") echo $rowLunes[4]['curso']; ?></td>
-                            <td><?php if ($rowMartes != null && $rowMartes[4]['bloque'] == "15:30 a 17:00") echo $rowMartes[4]['curso']; ?></td>
-                            <td><?php if ($rowMiercoles != null && $rowMiercoles[4]['bloque'] == "15:30 a 17:00") echo $rowMiercoles[4]['curso']; ?></td>
-                            <td><?php if ($rowJueves != null && $rowJueves[4]['bloque'] == "15:30 a 17:00") echo $rowJueves[4]['curso']; ?></td>
-                            <td><?php if ($rowViernes != null && $rowViernes[4]['bloque'] == "15:30 a 17:00") echo $rowViernes[4]['curso']; ?></td>
+                            <td><?php if (isset($rowLunes[4]) != null && $rowLunes[4]['bloque'] == "15:45 a 17:00"){ echo $rowLunes[4]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMartes[4]) != null && $rowMartes[4]['bloque'] == "15:45 a 17:00"){ echo $rowMartes[4]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowMiercoles[4]) != null && $rowMiercoles[4]['bloque'] == "15:45 a 17:00"){ echo $rowMiercoles[4]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowJueves[4]) != null && $rowJueves[4]['bloque'] == "15:45 a 17:00"){ echo $rowJueves[4]['curso']; }else{ echo "No hay registros!"; } ?></td>
+                            <td><?php if (isset($rowViernes[4]) != null && $rowViernes[4]['bloque'] == "15:45 a 17:00"){ echo $rowViernes[4]['curso']; }else{ echo "No hay registros!"; } ?></td>
                         </tr>
                     </tbody>
                 </table>
