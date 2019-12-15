@@ -33,7 +33,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/prueba.css">
 
-    <title>Menu Administrador</title>
+    <title>Menú Administrador</title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['rol'])) {
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
@@ -93,7 +93,7 @@ if (!isset($_SESSION['rol'])) {
             </ul>
         </div>
         <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 

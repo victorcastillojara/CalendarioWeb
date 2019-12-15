@@ -3,12 +3,12 @@
 include_once 'database.php';
 
 
-if(!isset($_SESSION['rol'])){
+if (!isset($_SESSION['rol'])) {
+  header('location:login.php');
+} else {
+  if ($_SESSION['rol'] != 1) {
     header('location:login.php');
-}else{
-    if($_SESSION['rol']!=1){
-        header('location:login.php');
-    }
+  }
 }
 
 ?>
@@ -37,94 +37,95 @@ if(!isset($_SESSION['rol'])){
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  
+
   <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
-  
+
 
   <title>Calendario web</title>
 </head>
 
 <body>
-    <header>    
-        <img class="top" src="img/login2.jpg">
-    </header>
-    <?php
-    $usu = $_SESSION['usu'];
-    $db = new Database();
-    $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu' => $usu]);
+  <header>
+    <img class="top" src="img/login2.jpg">
+  </header>
+  <?php
+  $usu = $_SESSION['usu'];
+  $db = new Database();
+  $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+  $query1->execute(['usu' => $usu]);
 
-    $row1 = $query1->fetch(PDO::FETCH_NUM);
-    $rol1 = $row1[0];
+  $row1 = $query1->fetch(PDO::FETCH_NUM);
+  $rol1 = $row1[0];
 
-    $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1' => $rol1]);
+  $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+  $query2->execute(['rol1' => $rol1]);
 
-    $row2 = $query2->fetch(PDO::FETCH_NUM);
-    $nom = $row2[2];
-    $ape = $row2[3];
+  $row2 = $query2->fetch(PDO::FETCH_NUM);
+  $nom = $row2[2];
+  $ape = $row2[3];
 
-    ?>
-    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
-        <div class="navegacion">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="menu-admin.php">Inicio</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="lista_docente.php">Docentes</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registrar
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
-                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
-                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
-
-    </nav>
-
-    <section>
-
-  <div class="container">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-7">
-        <br><br><div id="CalendarioWeb"></div>
-      </div>
-      <div class="col"></div>
+  ?>
+  <nav class="navbar navbar-light " style="background-color: #7BA8FF">
+    <div class="navegacion">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="menu-admin.php">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Horarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
+            <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="lista_docente.php">Docentes</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Registrar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
+            <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
+            <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </div>
-    </section>
+    <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+    <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
-    <footer>
+  </nav>
 
-    </footer>
-    
+  <section>
+
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-7">
+          <br><br>
+          <div id="CalendarioWeb"></div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+
+  </footer>
+
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('#CalendarioWeb').fullCalendar({
         header: {
           left: 'today, prev,next',
@@ -132,12 +133,12 @@ if(!isset($_SESSION['rol'])){
           right: 'month,basicWeek, basicDay,agendaWeek,agendaDay, Miboton'
         },
 
-        dayClick: function (date, jsEvent, view) {
+        dayClick: function(date, jsEvent, view) {
 
           //desactivacion de botones sin evento
-          $('#btnAgregar').prop("disabled",false);
-          $('#btnModificar').prop("disabled",true);
-          $('#btnEliminar').prop("disabled",true);
+          $('#btnAgregar').prop("disabled", false);
+          $('#btnModificar').prop("disabled", true);
+          $('#btnEliminar').prop("disabled", true);
 
           Limpiar();
           $('#txtFecha').val(date.format());
@@ -148,12 +149,12 @@ if(!isset($_SESSION['rol'])){
         events: 'http://localhost/CalendarioWeb/eventos.php',
 
 
-        eventClick: function (calEvent, jsEvent, view) {
-          
+        eventClick: function(calEvent, jsEvent, view) {
+
           //desactivacion de botones con evento
-          $('#btnAgregar').prop("disabled",true);
-          $('#btnModificar').prop("disabled",false);
-          $('#btnEliminar').prop("disabled",false);
+          $('#btnAgregar').prop("disabled", true);
+          $('#btnModificar').prop("disabled", false);
+          $('#btnEliminar').prop("disabled", false);
 
           $('#tituloEvento').html(calEvent.usuario);
 
@@ -179,7 +180,7 @@ if(!isset($_SESSION['rol'])){
           $("#ModalEventos").modal();
         },
         editable: true,
-        eventDrop: function (calEvent) {
+        eventDrop: function(calEvent) {
 
           $('#txtID').val(calEvent.id);
           $('#bloque').val(calEvent.bloque);
@@ -198,123 +199,135 @@ if(!isset($_SESSION['rol'])){
       });
 
     })
-
   </script>
 
 
   <!-- Modal(Agregar,modificar,eliminar )-->
   <form action="#" method="post">
-  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="tituloEvento"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+    <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloEvento"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-          
-
-         
-
-          <div class="form-row">
-
-          <div class="form-group col-md-5">
-            <?php
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <?php
                 include "conexion.php";
 
-                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+                ?>
+                <label for="docente">Seleccione docente</label>
+                <select id="docente" name="docente" class="form-control">
+                  <option value="0">Seleccione docente:</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM docente");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['id_docente'] . '">' . $valores['nombre'] . ' ' . $valores['apellido'] . '</option>';
+                  }
+                  $id=$_POST['docente'];
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <?php
+                include "conexion.php";
+
+                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
                 ?>
                 <label for="curso">Seleccione curso</label>
                 <select id="curso" name="curso" class="form-control">
-                <option value="0" disabled >Seleccione curso</option>
-                    <?php
-                      $query = $mysqli -> query ("SELECT * FROM curso");
-                      while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['curso'].' '.$valores['nivel'].'">'.$valores['curso'].' '.$valores['nivel'].'</option>';
-                      }
-                    ?>
+                  <option value="0" disabled>Seleccione curso</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM curso");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['curso'] . ' ' . $valores['nivel'] . '">' . $valores['curso'] . ' ' . $valores['nivel'] . '</option>';
+                  }
+                  ?>
                 </select>
-            </div>
+              </div>
 
-            <div class="form-group col-md-8">
-              <label>Titulo evaluación</label>
-              <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
-            </div>
-            
-            
-            <div class="form-group col-md-4">
-              <!--<label>bloque</label>
+              <div class="form-group col-md-8">
+                <label>Título evaluación</label>
+                <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
+              </div>
+
+
+              <div class="form-group col-md-4">
+                <!--<label>bloque</label>
               <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
-              <?php
+                <?php
                 include "conexion.php";
 
-                  $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
                 ?>
                 <label for="bloque">Seleccione bloque</label>
-                
+
                 <select id="bloque" name="bloque" class="form-control">
-                <option value="0" disabled >Seleccione bloque</option>
-                    <?php
-                      $query = $mysqli -> query ("SELECT * FROM bloque");
-                      while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['bloque'].'">'.$valores['bloque'].'</option>';
-                      }
-                      $bloque=$_POST['bloque'];
-                    ?>
+                  <option value="0" disabled>Seleccione bloque</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM bloque");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
+                  }
+                  $bloque = $_POST['bloque'];
+                  ?>
                 </select>
-                      <input type="submit">
-                      
+                <input type="submit">
+
+              </div>
+
+
             </div>
-            
+
+            <div class="form-group">
+              <label>Descripción evaluación</label>
+              <textarea name="txtDescripcion" id="txtDescripcion" rows="3" class="form-control"></textarea>
+            </div>
+            <div form-group>
+              <label>Color</label>
+              <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
+            </div>
+
+            <input type="hidden" id="txtID" name="txtID">
+            <input type="hidden" id="txtFecha" name="txtFecha">
+            <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom . " " . $ape ?>">
+            <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $id ?>">
+            <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
 
           </div>
-
-          <div class="form-group">
-            <label>Descripcion evaluacion</label>
-            <textarea name="txtDescripcion" id="txtDescripcion" rows="3" class="form-control"></textarea>
+          <div class="modal-footer">
+            <input type="submit" id="btnAgregar" class="btn btn-success">
+            <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
+            <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           </div>
-          <div form-group>
-            <label>Color</label>
-            <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
-          </div>
-
-          <input type="hidden" id="txtID" name="txtID">
-          <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom." ".$ape ?>">
-          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>"> 
-          <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
-
-        </div>
-        <div class="modal-footer">
-          <input type="submit" id="btnAgregar" class="btn btn-success">
-          <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
-          <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <script>
-
     var NuevoEvento;
-    $('#btnAgregar').click(function () {
+    $('#btnAgregar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('agregar', NuevoEvento);
     });
 
-    $('#btnEliminar').click(function () {
+    $('#btnEliminar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('eliminar', NuevoEvento);
     });
 
-    $('#btnModificar').click(function () {
+    $('#btnModificar').click(function() {
       RecolectarDatosGUI();
       EnviarInformacion('modificar', NuevoEvento);
     });
@@ -323,10 +336,10 @@ if(!isset($_SESSION['rol'])){
     function RecolectarDatosGUI() {
       NuevoEvento = {
         id: $('#txtID').val(),
-        id_usuario: $('#id_usuario').val(),
-        usuario:$('#usuario').val(),
-        curso:$('#curso').val(),
-        bloque:$('#bloque').val(),
+        id_usuario: $('#docente').val(),
+        usuario: $('#usuario').val(),
+        curso: $('#curso').val(),
+        bloque: $('#bloque').val(),
         title: $('#txtTitulo').val(),
         start: $('#txtFecha').val() + " " + $('#bloque').val(),
         color: $('#txtColor').val(),
@@ -344,7 +357,7 @@ if(!isset($_SESSION['rol'])){
         type: 'POST',
         url: 'eventos.php?accion=' + accion,
         data: objEvento,
-        success: function (msg) {
+        success: function(msg) {
           if (msg) {
             $('#CalendarioWeb').fullCalendar('refetchEvents');
 
@@ -358,7 +371,7 @@ if(!isset($_SESSION['rol'])){
           }
 
         },
-        error: function () {
+        error: function() {
           alert("hay un error");
         }
 
@@ -366,18 +379,18 @@ if(!isset($_SESSION['rol'])){
     }
 
     function Limpiar() {
-        $('#txtID').val('');
-        $('#txtTitulo').val('');
-        $('#bloque').val('');
-        $('#curso').val('');
-        $('#txtColor').val('');
-        $('#txtDescripcion').val('');
+      $('#txtID').val('');
+      $('#txtTitulo').val('');
+      $('#bloque').val('');
+      $('#curso').val('');
+      $('#txtColor').val('');
+      $('#txtDescripcion').val('');
 
-      }
+    }
   </script>
 </body>
 <?php
 echo $bloque;
 ?>
-</html>
 
+</html>

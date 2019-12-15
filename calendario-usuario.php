@@ -190,6 +190,7 @@ if (!isset($_SESSION['rol'])) {
 
 
   <!-- Modal(Agregar,modificar,eliminar )-->
+  <form action="#" method="post">
   <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -239,13 +240,14 @@ if (!isset($_SESSION['rol'])) {
 
               ?>
               <label for="bloque">Seleccione bloque</label>
-              <select id="bloque" name="boque" class="form-control">
+              <select id="bloque" name="bloque" class="form-control">
                 <option value="0">Seleccione bloque</option>
                 <?php
                 $query = $mysqli->query("SELECT * FROM bloque");
                 while ($valores = mysqli_fetch_array($query)) {
                   echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
                 }
+                $bloque=$_POST['bloque'];
                 ?>
               </select>
 
@@ -279,6 +281,7 @@ if (!isset($_SESSION['rol'])) {
       </div>
     </div>
   </div>
+  </form>
   <script>
     var NuevoEvento;
     $('#btnAgregar').click(function() {
@@ -305,11 +308,11 @@ if (!isset($_SESSION['rol'])) {
         curso: $('#curso').val(),
         bloque: $('#bloque').val(),
         title: $('#txtTitulo').val(),
-        start: $('#txtFecha').val() + " " + $('#txtHora').val(),
+        start: $('#txtFecha').val() + " " + $('#bloque').val(),
         color: $('#txtColor').val(),
         descripcion: $('#txtDescripcion').val(),
         textColor: "#FFFFFF",
-        end: $('#txtFecha').val() + " " + $('#txtHora').val()
+        end: $('#txtFecha').val() + " " + $('#bloque').val()
       };
 
     }
@@ -319,7 +322,7 @@ if (!isset($_SESSION['rol'])) {
       $.ajax({
 
         type: 'POST',
-        url: 'eventos.php?accion=' + accion,
+        url: 'eventos_docente.php?accion=' + accion,
         data: objEvento,
         success: function(msg) {
           if (msg) {

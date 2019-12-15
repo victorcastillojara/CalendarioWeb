@@ -63,20 +63,20 @@ if(!isset($_SESSION['rol'])){
                     <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="imprimirHorario.php">imprimir horario</a>
+                    <a class="nav-link" href="imprimirHorario.php">Imprimir horario</a>
                 </li>
             </ul>
         </div>
         <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom." ".$ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
         <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
+            <h1>Información</h1>
 
             <?php
 

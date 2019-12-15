@@ -70,7 +70,7 @@ if (!isset($_SESSION['rol'])) {
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +84,7 @@ if (!isset($_SESSION['rol'])) {
             </ul>
         </div>
         <h5>Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 
@@ -115,7 +115,7 @@ if (!isset($_SESSION['rol'])) {
                             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
+                            <label for="telefono">Teléfono</label>
                             <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
                         </div>
                     </div>
@@ -130,7 +130,7 @@ if (!isset($_SESSION['rol'])) {
                             <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
+                            <label for="direccion">Direccién</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion">
                         </div>
 

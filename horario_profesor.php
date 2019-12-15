@@ -32,7 +32,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="css/estilo-img.css">
   <link rel="stylesheet" href="css/prueba.css">
 
-  <title>Menu Docente</title>
+  <title>Menú Docente</title>
 </head>
 
 <body>
@@ -69,12 +69,12 @@ if (!isset($_SESSION['rol'])) {
           <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
         </li>
       </ul>
     </div>
     <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-    <a class="nav-link" href="logout.php">cerrar sesion</a>
+    <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
   </nav>
 
@@ -90,7 +90,7 @@ if (!isset($_SESSION['rol'])) {
               <th scope="col">Bloque</th>
               <th scope="col">Lunes</th>
               <th scope="col">Martes</th>
-              <th scope="col">Miercoles</th>
+              <th scope="col">Miércoles</th>
               <th scope="col">Jueves</th>
               <th scope="col">Viernes</th>
             </tr>

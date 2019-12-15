@@ -113,7 +113,7 @@ function ConsultarDocente($id_docente_mod){
             </ul>
         </div>
         <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 
@@ -148,14 +148,14 @@ function ConsultarDocente($id_docente_mod){
                             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="<?php echo $consulta[2] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
+                            <label for="telefono">Teléfono</label>
                             <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $consulta[3] ?>">
                         </div>
                     </div>
 
                     <div class="form-row">
                     <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
+                            <label for="direccion">Dirección</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" value="<?php echo $consulta[4] ?>">
                         </div>
                         <div class="form-group col-md-3">
@@ -165,12 +165,6 @@ function ConsultarDocente($id_docente_mod){
                         <div class="form-group col-md-3">
                             <label for="Email">Email</label>
                             <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail" value="<?php echo $consulta[5] ?>">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="id_curso">ID De Curso</label>
-                            <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>

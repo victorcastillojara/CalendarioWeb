@@ -30,7 +30,7 @@ if (!isset($_SESSION['rol'])) {
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/prueba.css">
 
-    <title>Menu Administrador</title>
+    <title>Menú Administrador</title>
 </head>
 
 <body>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['rol'])) {
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
@@ -90,7 +90,7 @@ if (!isset($_SESSION['rol'])) {
             </ul>
         </div>
         <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 
@@ -109,7 +109,7 @@ $queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_infor
     <div align="center" style="margin-top:30px;">
     <form action="info.php" method="post">
     
-    <h1>Informacion</h1>
+    <h1>Información</h1>
 
     Titulo: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
     <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
