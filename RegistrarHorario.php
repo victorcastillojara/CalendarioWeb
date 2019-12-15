@@ -1,7 +1,7 @@
 <?php
 
 include_once 'database.php';
-include_once 'insertarCurso.php';
+
 
 
 
@@ -38,7 +38,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
 

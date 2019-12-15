@@ -2,9 +2,6 @@
 
 include_once 'database.php';
 
-
-session_start();
-
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
 } else {
@@ -60,7 +57,7 @@ function ConsultarDocente($id_docente_mod){
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php
@@ -122,8 +119,8 @@ function ConsultarDocente($id_docente_mod){
             <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
                 <div class="center_div">
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
+                <div class="form-row">
+                        <div class="form-group col-md-3 bc">
                             <label for="nombre">RUT</label>
                             <input type="text" name="rut" class="form-control" id="rut" placeholder="RUT" value="<?php echo $consulta[0] ?>">
                         </div>
@@ -156,12 +153,6 @@ function ConsultarDocente($id_docente_mod){
                         <div class="form-group col-md-3">
                             <label for="Email">Email</label>
                             <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail" value="<?php echo $consulta[5] ?>">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="id_curso">ID De Curso</label>
-                            <input type="text" class="form-control" name="id_curso" id="id_carlos" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>

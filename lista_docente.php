@@ -35,7 +35,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php
@@ -98,7 +98,7 @@ if (!isset($_SESSION['rol'])) {
     <th>direccion</th>
     <th>correo</th>
     <th>id usuario</th>
-    <th><a href="registro-docente.php"><button style="width:500dp">Registrar datos nuevos</button></a></th>
+    <th><a href="registro-docente.php"><button style="width: 150px; height: 57px;" class="btn btn-info"> Registrar datos nuevos</button></a></th>
     </thead>
     
 
@@ -117,8 +117,8 @@ if (!isset($_SESSION['rol'])) {
         echo '<td>'; echo $valores['direccion']; echo '</td>';
         echo '<td>'; echo $valores['correo']; echo '</td>';
         echo '<td>'; echo $valores['id_usuario']; echo '</td>';
-        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button'>Modificar</button></a></td>";
-        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button'>Eliminar</button></a></td>";
+        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button' class='btn btn-info'>Modificar</button></a></td>";
+        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button' class='btn btn-info'>Eliminar</button></a></td>";
         echo '</tr>';
         
     }

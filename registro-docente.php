@@ -97,7 +97,6 @@ if (!isset($_SESSION['rol'])) {
                         <div class="form-group col-md-3 bc">
                             <label for="rut">RUT Docente</label>
                             <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
-                            <button type="submit" class="btn btn-primary btnb" name="btnBuscar">Buscar Docente</button>
                         </div>
                     </div>
 

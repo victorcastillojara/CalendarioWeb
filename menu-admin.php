@@ -35,7 +35,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
 
@@ -103,7 +103,7 @@ if (!isset($_SESSION['rol'])) {
 
             Titulo: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
             <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
-            <input type="submit"></input>
+            <button type='submit' class='btn btn-primary'>Enviar Informacion</button>
         </form>
 
 

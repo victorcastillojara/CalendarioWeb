@@ -1,7 +1,6 @@
 <?php
 
 include_once 'database.php';
-session_start();
 
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
@@ -109,7 +108,7 @@ function ConsultarCurso($id_curso_mod){
     <section>
         <div align="center">
             <h1>Registro de Curso</h1>
-            <form action="registrocurso.php" method="post">
+            <form action="modificacion_curso.php" method="post">
                     <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
                 <div class="center_div">
                     <div class="form-row">

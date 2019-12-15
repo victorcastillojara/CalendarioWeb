@@ -35,7 +35,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php
@@ -107,7 +107,7 @@ if (!isset($_SESSION['rol'])) {
         echo '<td>'; echo $valores['curso']; echo '</td>';
         echo '<td>'; echo $valores['nivel']; echo '</td>';
         echo '<td>'; echo $valores['cant_alumnos']; echo '</td>';
-        echo "<td><a href='modificar_curso.php?no=".$valores['id_curso']."'><button type='button'>Modificar</button></a></td>";
+        echo "<td><a href='modificar_curso.php?no=".$valores['id_curso']."'><button type='button' class='btn btn-info'>Modificar</button></a></td>";
         echo '</tr>';
         
         
