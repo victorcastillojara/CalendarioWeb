@@ -1,6 +1,8 @@
 <?php
 session_start();    
 
+
+
 header('Content-Type: application/json');
 
 $pdo=new PDO("mysql:dbname=scejc;host=localhost","root","");
@@ -44,8 +46,7 @@ switch($accion){
     ));
 
     echo json_encode($respuesta);
-}
-
+    }
     break;
     case 'eliminar':
     //intstrucciones de eliminar
@@ -98,10 +99,14 @@ echo json_encode($respuesta);
 
     default:
     //seleccionar los eventos del calendadrio
+    
+    $id=$_SESSION['id_docente'];
 
-$SentenciaSQL=$pdo->prepare("SELECT * FROM eventos");
 
-$SentenciaSQL->execute();
+$SentenciaSQL=$pdo->prepare("SELECT * FROM eventos WHERE id_usuario=:id");
+
+
+$SentenciaSQL->execute(array("id"=>$id));
 
 $resultado=$SentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
