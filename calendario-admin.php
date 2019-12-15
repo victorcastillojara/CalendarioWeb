@@ -41,6 +41,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/prueba.css">
 
 
   <title>Calendario web</title>
@@ -95,12 +96,12 @@ if (!isset($_SESSION['rol'])) {
 
   </nav>
 
-  <section>
+  <section style="margin-top: 5px">
 
     <div class="container">
       <div class="row">
         <div class="col"></div>
-        <div class="col-7">
+        <div class="col-7" style="background: white">
           <br><br>
           <div id="CalendarioWeb"></div>
         </div>
