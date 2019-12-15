@@ -1,5 +1,4 @@
 <?php 
-
 require 'database.php';
 
   $usu = $_SESSION['usu'];
