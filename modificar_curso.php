@@ -11,21 +11,18 @@ if (!isset($_SESSION['rol'])) {
 }
 
 
-$consulta=ConsultarDocente($_GET['no']);
+$consulta=ConsultarCurso($_GET['no']);
 
-function ConsultarDocente($id_docente_mod){
+function ConsultarCurso($id_curso_mod){
     include 'conexion.php';
     $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-    $query = $mysqli->query("SELECT * FROM docente WHERE id_docente='".$id_docente_mod."'");
+    $query = $mysqli->query("SELECT * FROM curso WHERE id_curso='".$id_curso_mod."'");
     $valores = mysqli_fetch_assoc($query);
     return [
-        $valores['rut'],
-        $valores['nombre'],
-        $valores['apellido'],
-        $valores['telefono'],
-        $valores['direccion'],
-        $valores['correo'],
+        $valores['curso'],
+        $valores['nivel'],
+        $valores['cant_alumnos'],
     ];
     
 }
@@ -57,7 +54,7 @@ function ConsultarDocente($id_docente_mod){
 
 <body>
     <header>
-        <img class="top" src="img/login2.jpg">
+        <img class="top" src="img/login.jpg">
     </header>
 
     <?php
@@ -77,7 +74,7 @@ function ConsultarDocente($id_docente_mod){
     $ape = $row2[3];
 
     ?>
-        <nav class="navbar navbar-light " style="background-color: #7BA8FF">
+    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -109,54 +106,27 @@ function ConsultarDocente($id_docente_mod){
     </nav>
 
     <section>
-
-
-
         <div align="center">
-            <h1>Registro de Docentes</h1>
-            <!--Crear archivo php VerificarUsuario-->
-            <form action="modificacion.php" method="post">
-            <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
+            <h1>Registro de Curso</h1>
+            <form action="modificacion_curso.php" method="post">
+                    <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
                 <div class="center_div">
-
-                <div class="form-row">
-                        <div class="form-group col-md-3 bc">
-                            <label for="nombre">RUT</label>
-                            <input type="text" name="rut" class="form-control" id="rut" placeholder="RUT" value="<?php echo $consulta[0] ?>">
-                        </div>
-                    </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <label for="nombre">Nombre Docente</label>
-                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $consulta[1] ?>">
+                            <label for="curso">Seleccione curso</label>
+                            <input type="text" name="curso" class="form-control" id="curso" placeholder="Curso" readonly="readonly" value="<?php echo $consulta[0] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="apellido">Apellido(s) Docente</label>
-                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="<?php echo $consulta[2] ?>">
+                            <label for="nivel">Nivel Curso</label>
+                            <input type="text" name="nivel" class="form-control" id="nivel" placeholder="Nivel de Curso" readonly="readonly" value="<?php echo $consulta[1] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $consulta[3] ?>">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                    <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" value="<?php echo $consulta[4] ?>">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="contrasena">Contraseña</label>
-                            <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="Email">Email</label>
-                            <input type="text" class="form-control" name="correo" id="correo" placeholder="E-mail" value="<?php echo $consulta[5] ?>">
+                            <label for="cant_alumnos">Cantidad de Alumnos</label>
+                            <input type="text" class="form-control" name="cant_alumnos" id="cant_alumnos" placeholder="Cantidad de alumnos" value="<?php echo $consulta[2] ?>">
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Modificar datos</button>
+                <button type="submit" class="btn btn-primary" name="btn-enviar">Modificar Curso</button>
 
             </form>
 
@@ -164,7 +134,7 @@ function ConsultarDocente($id_docente_mod){
 
 
 
-    </section>
+    </section>  
 
     <footer>
 

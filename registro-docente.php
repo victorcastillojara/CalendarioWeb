@@ -22,6 +22,7 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/prueba.css">
@@ -58,14 +59,8 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
@@ -73,19 +68,15 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registrar
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
-                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
-                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="lista_curso.php">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar Horario</a>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
@@ -106,10 +97,9 @@ if (!isset($_SESSION['rol'])) {
                         <div class="form-group col-md-3 bc">
                             <label for="rut">RUT Docente</label>
                             <input type="text" class="form-control" name="rut" id="rut" placeholder="RUT">
-                            <button type="submit" class="btn btn-primary" name="btnBuscar">Buscar Docente</button>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label for="nombre">Nombre Docente</label>
@@ -147,7 +137,7 @@ if (!isset($_SESSION['rol'])) {
                         </div>
                         <div class="form-group col-md-3">
                             <label for="id_curso">ID De Curso</label>
-                            <input type="text" class="form-control" name="id_curso" id="id_curso" placeholder="ID_CURSO">
+                            <input type="text" class="form-control" name="id_curso" id="id_curss" placeholder="ID_CURSO">
                         </div>
                     </div>
                 </div>

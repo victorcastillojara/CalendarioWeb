@@ -35,7 +35,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php
@@ -61,14 +61,8 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
@@ -76,19 +70,15 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registrar
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
-                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
-                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="lista_curso.php">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar Horario</a>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
@@ -98,8 +88,8 @@ if (!isset($_SESSION['rol'])) {
 
     <secton>
     <div align="center" style="margin-top: 30px;">
-    <table border="2">
-    <thead>
+    <table class="table table-striped table-dark tabla1">
+  <thead>
     <th>id</th>
     <th>rut</th>
     <th>nombre</th>
@@ -107,8 +97,8 @@ if (!isset($_SESSION['rol'])) {
     <th>telefono</th>
     <th>direccion</th>
     <th>correo</th>
-    <th>idusu</th>
-    <th><a href="registro-docente.php"><button>Registrar datos nuevos</button></a></th>
+    <th>id usuario</th>
+    <th><a href="registro-docente.php"><button style="width: 150px; height: 57px;" class="btn btn-info"> Registrar datos nuevos</button></a></th>
     </thead>
     
 
@@ -127,8 +117,8 @@ if (!isset($_SESSION['rol'])) {
         echo '<td>'; echo $valores['direccion']; echo '</td>';
         echo '<td>'; echo $valores['correo']; echo '</td>';
         echo '<td>'; echo $valores['id_usuario']; echo '</td>';
-        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button'>Modificar</button></a></td>";
-        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button'>Eliminar</button></a></td>";
+        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button' class='btn btn-info'>Modificar</button></a></td>";
+        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button' class='btn btn-info'>Eliminar</button></a></td>";
         echo '</tr>';
         
     }
