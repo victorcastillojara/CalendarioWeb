@@ -3,6 +3,7 @@
 include_once 'database.php';
 
 
+
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
 } else {
@@ -18,26 +19,24 @@ if (!isset($_SESSION['rol'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
-    <link rel="stylesheet" href="css/prueba.css">
+    <link rel="stylesheet" href="css/estilo-img.css">
+    <link rel="stylesheet" href="css/prueba.css"> 
+    <link rel="stylesheet" href="css/estilo-form.css">
 
-    <title>Menú Administrador</title>
+    <title>Registro Docente</title>
 </head>
 
 <body>
     <header>
         <img class="top" src="img/login2.jpg">
     </header>
-
 
     <?php
     $usu = $_SESSION['usu'];
@@ -56,7 +55,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
+   <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -66,7 +65,7 @@ if (!isset($_SESSION['rol'])) {
                     <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
@@ -79,41 +78,49 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesión</a>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
 
+    <secton>
+    <div align="center" style="margin-top: 30px;">
+    <table class="table table-striped table-dark tabla1">
+  <thead>
+    <tr>
+      <th scope="col">ID Curso</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Nivel</th>
+      <th scope="col">Alumnos</th>
+    </tr>
+  </thead>
+    
+
     <?php
+    include "conexion.php";
+    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-    $db = new Database();
-
-    $queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_informacion=1');
-    $queryInfo->execute();
-    $rowInfo = $queryInfo->fetchAll(PDO::FETCH_ASSOC);
-
-    $mostrarTitulo = $rowInfo[0]['titulo'];
-
+    $query = $mysqli->query("SELECT * FROM curso");
+    while ($valores = mysqli_fetch_assoc($query)) {
+        echo '<tr>';
+        echo '<td>'; echo $valores['id_curso']; echo '</td>';
+        echo '<td>'; echo $valores['curso']; echo '</td>';
+        echo '<td>'; echo $valores['nivel']; echo '</td>';
+        echo '<td>'; echo $valores['cant_alumnos']; echo '</td>';
+        echo "<td><a href='modificar_curso.php?no=".$valores['id_curso']."'><button type='button' class='btn btn-info'>Modificar</button></a></td>";
+        echo '</tr>';
+        
+        
+    }
     ?>
 
-    <div align="center" style="margin-top:30px;">
-        <form action="info.php" method="post">
-
-            <h1>Información</h1>
-
-            Título: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
-            <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
-            <button type='submit' class='btn btn-primary'>Enviar Informacion</button>
-        </form>
-
-
+    </table>
     </div>
-
-
+    
     </section>
 
     <footer>
-        
+
     </footer>
 </body>
 
