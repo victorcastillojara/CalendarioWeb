@@ -1,8 +1,7 @@
 <?php
 
 include_once 'database.php';
-
-
+session_start();
 
 if (!isset($_SESSION['rol'])) {
     header('location:index.php');
@@ -11,6 +10,27 @@ if (!isset($_SESSION['rol'])) {
         header('location:index.php');
     }
 }
+
+
+$consulta=ConsultarCurso($_GET['no']);
+
+function ConsultarCurso($id_curso_mod){
+    include 'conexion.php';
+    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+    $query = $mysqli->query("SELECT * FROM curso WHERE id_curso='".$id_curso_mod."'");
+    $valores = mysqli_fetch_assoc($query);
+    return [
+        $valores['curso'],
+        $valores['nivel'],
+        $valores['cant_alumnos'],
+    ];
+    
+}
+
+    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,48 +106,36 @@ if (!isset($_SESSION['rol'])) {
 
     </nav>
 
-    <secton>
-    <div align="center" style="margin-top: 30px;">
-    <table class="table table-striped table-dark tabla1">
-  <thead>
-    <th>id</th>
-    <th>rut</th>
-    <th>nombre</th>
-    <th>apellido</th>
-    <th>telefono</th>
-    <th>direccion</th>
-    <th>correo</th>
-    <th>id usuario</th>
-    <th><a href="registro-docente.php"><button style="width:500dp">Registrar datos nuevos</button></a></th>
-    </thead>
-    
+    <section>
+        <div align="center">
+            <h1>Registro de Curso</h1>
+            <form action="registrocurso.php" method="post">
+                    <input type="hidden" name="no" value="<?php echo $_GET['no'] ?>">
+                <div class="center_div">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="curso">Seleccione curso</label>
+                            <input type="text" name="curso" class="form-control" id="curso" placeholder="Curso" readonly="readonly" value="<?php echo $consulta[0] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="nivel">Nivel Curso</label>
+                            <input type="text" name="nivel" class="form-control" id="nivel" placeholder="Nivel de Curso" readonly="readonly" value="<?php echo $consulta[1] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cant_alumnos">Cantidad de Alumnos</label>
+                            <input type="text" class="form-control" name="cant_alumnos" id="cant_alumnos" placeholder="Cantidad de alumnos" value="<?php echo $consulta[2] ?>">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" name="btn-enviar">Modificar Curso</button>
 
-    <?php
-    include "conexion.php";
-    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+            </form>
 
-    $query = $mysqli->query("SELECT * FROM docente");
-    while ($valores = mysqli_fetch_assoc($query)) {
-        echo '<tr>';
-        echo '<td>'; echo $valores['id_docente']; echo '</td>';
-        echo '<td>'; echo $valores['rut']; echo '</td>';
-        echo '<td>'; echo $valores['nombre']; echo '</td>';
-        echo '<td>'; echo $valores['apellido']; echo '</td>';
-        echo '<td>'; echo $valores['telefono']; echo '</td>';
-        echo '<td>'; echo $valores['direccion']; echo '</td>';
-        echo '<td>'; echo $valores['correo']; echo '</td>';
-        echo '<td>'; echo $valores['id_usuario']; echo '</td>';
-        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button'>Modificar</button></a></td>";
-        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button'>Eliminar</button></a></td>";
-        echo '</tr>';
-        
-    }
-    ?>
+        </div>
 
-    </table>
-    </div>
-    
-    </section>
+
+
+    </section>  
 
     <footer>
 

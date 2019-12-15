@@ -55,7 +55,7 @@ if (!isset($_SESSION['rol'])) {
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
+   <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
@@ -83,43 +83,33 @@ if (!isset($_SESSION['rol'])) {
 
     </nav>
 
-
-    </nav>
-
     <secton>
     <div align="center" style="margin-top: 30px;">
     <table class="table table-striped table-dark tabla1">
   <thead>
-    <th>id</th>
-    <th>rut</th>
-    <th>nombre</th>
-    <th>apellido</th>
-    <th>telefono</th>
-    <th>direccion</th>
-    <th>correo</th>
-    <th>id usuario</th>
-    <th><a href="registro-docente.php"><button style="width:500dp">Registrar datos nuevos</button></a></th>
-    </thead>
+    <tr>
+      <th scope="col">ID Curso</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Nivel</th>
+      <th scope="col">Alumnos</th>
+    </tr>
+  </thead>
     
 
     <?php
     include "conexion.php";
     $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-    $query = $mysqli->query("SELECT * FROM docente");
+    $query = $mysqli->query("SELECT * FROM curso");
     while ($valores = mysqli_fetch_assoc($query)) {
         echo '<tr>';
-        echo '<td>'; echo $valores['id_docente']; echo '</td>';
-        echo '<td>'; echo $valores['rut']; echo '</td>';
-        echo '<td>'; echo $valores['nombre']; echo '</td>';
-        echo '<td>'; echo $valores['apellido']; echo '</td>';
-        echo '<td>'; echo $valores['telefono']; echo '</td>';
-        echo '<td>'; echo $valores['direccion']; echo '</td>';
-        echo '<td>'; echo $valores['correo']; echo '</td>';
-        echo '<td>'; echo $valores['id_usuario']; echo '</td>';
-        echo "<td><a href='modificar_docente.php?no=".$valores['id_docente']."'><button type='button'>Modificar</button></a></td>";
-        echo "<td><a href='eliminar_docente.php?no=".$valores['id_docente']."'><button type='button'>Eliminar</button></a></td>";
+        echo '<td>'; echo $valores['id_curso']; echo '</td>';
+        echo '<td>'; echo $valores['curso']; echo '</td>';
+        echo '<td>'; echo $valores['nivel']; echo '</td>';
+        echo '<td>'; echo $valores['cant_alumnos']; echo '</td>';
+        echo "<td><a href='modificar_curso.php?no=".$valores['id_curso']."'><button type='button'>Modificar</button></a></td>";
         echo '</tr>';
+        
         
     }
     ?>

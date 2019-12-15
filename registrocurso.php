@@ -1,22 +1,17 @@
 <?php
-include_once 'conexion.php';
-include_once 'database.php';
 
+ModificarCurso($_POST['curso'],$_POST['nivel'],$_POST['cant_alumnos'],$_POST['no']);
 
+function ModificarCurso($curso,$nivel,$cant_alumnos,$no){
+    include "conexion.php";
+    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-if (isset($_POST['btn-enviar'])) {
-
-    $curso=$_POST['curso'];
-    $nivel=$_POST['nivel'];
-    $cant_alumnos=$_POST['cant_alumnos'];
-    
-
-    $sql="UPDATE curso SET nivel='$nivel',cant_alumnos='$cant_alumnos' WHERE id_curso= $curso";
-
-    $conn->query($sql);
-
-    header("Location:registro-curso.php");
-
+    $query = $mysqli->query("UPDATE curso SET curso='".$curso."', nivel='".$nivel."', cant_alumnos='".$cant_alumnos."' WHERE id_curso='".$no."'");
 }
-$conn->close();
+
 ?>
+
+<script>
+alert("Datos modificados correctamente!");
+window.location.href='lista_curso.php';
+</script>

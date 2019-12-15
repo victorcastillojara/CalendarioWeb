@@ -99,7 +99,7 @@ if (!isset($_SESSION['rol'])) {
             <form action="registrocurso.php" method="post">
                 <div class="center_div">
                     <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <?php
                             include "conexion.php";
 
@@ -117,11 +117,7 @@ if (!isset($_SESSION['rol'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="nivel">Nivel Curso</label>
-                            <input type="text" name="nivel" class="form-control" id="nivel" placeholder="Nivel de Curso">
-                        </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <label for="cant_alumnos">Cantidad de Alumnos</label>
                             <input type="text" class="form-control" name="cant_alumnos" id="cant_alumnos" placeholder="Cantidad de alumnos">
                         </div>

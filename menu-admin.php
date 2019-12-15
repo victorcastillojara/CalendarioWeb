@@ -62,14 +62,8 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
@@ -77,53 +71,49 @@ if (!isset($_SESSION['rol'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registrar
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
-                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
-                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="lista_curso.php">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar Horario</a>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
 
     <?php
 
-$db = new Database();
+    $db = new Database();
 
-$queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_informacion=1');
+    $queryInfo = $db->connect()->prepare('SELECT * FROM informaciones WHERE id_informacion=1');
     $queryInfo->execute();
-    $rowInfo=$queryInfo->fetchAll(PDO::FETCH_ASSOC);
+    $rowInfo = $queryInfo->fetchAll(PDO::FETCH_ASSOC);
 
-    $mostrarTitulo=$rowInfo[0]['titulo'];
-    
+    $mostrarTitulo = $rowInfo[0]['titulo'];
+
     ?>
 
     <div align="center" style="margin-top:30px;">
-    <form action="info.php" method="post">
-    
-    <h1>Informacion</h1>
+        <form action="info.php" method="post">
 
-    Titulo: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
-    <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
-    <input type="submit"></input>
-    </form>
+            <h1>Informacion</h1>
 
-        
+            Titulo: <input type="text" name="titulo" id="titulo" value="<?php echo $mostrarTitulo; ?>"><br><br>
+            <textarea name="descripcion" id="descripcion" cols="100" rows="10"><?php echo $rowInfo[0]['descripcion'] ?></textarea><br><br>
+            <input type="submit"></input>
+        </form>
+
+
     </div>
 
 
     </section>
 
     <footer>
-in
+        
     </footer>
 </body>
 

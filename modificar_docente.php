@@ -80,20 +80,14 @@ function ConsultarDocente($id_docente_mod){
     $ape = $row2[3];
 
     ?>
-    <nav class="navbar navbar-light " style="background-color: #7BA8FF">
+        <nav class="navbar navbar-light " style="background-color: #7BA8FF">
         <div class="navegacion">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="menu-admin.php">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Horarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="horario_profesor_admin.php">Horario Docente</a>
-                        <a class="dropdown-item" href="horario-curso.php">Horario Cursos</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
@@ -101,18 +95,15 @@ function ConsultarDocente($id_docente_mod){
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cursos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
-                        <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="lista_curso.php">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="RegistrarHorario.php">Registrar Horario</a>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>
