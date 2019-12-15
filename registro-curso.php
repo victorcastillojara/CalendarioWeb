@@ -73,7 +73,7 @@ if (!isset($_SESSION['rol'])) {
                     <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="RegistrarHorario.php">Registrar horario</a>
+                    <a class="nav-link" href="lista_docente.php">Docentes</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,11 +82,12 @@ if (!isset($_SESSION['rol'])) {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="registro-docente.php">Registrar Docente</a>
                         <a class="dropdown-item" href="registro-curso.php">Registrar Curso</a>
+                        <a class="dropdown-item" href="RegistrarHorario.php">Registrar Horario</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesion</a>
 
     </nav>

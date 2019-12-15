@@ -29,15 +29,7 @@ if(!isset($_SESSION['rol'])){
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/descripcion.css">
-=======
-    <link rel="stylesheet" href="css/prueba.css">
->>>>>>> 913ea387895ce813cd59c1bb1dddb77ddbbf31d9
-
-    <title>Menu Docente</title>
 </head>
-
 <body>
     <header>    
         <img class="top" src="img/login.jpg">
@@ -72,6 +64,9 @@ if(!isset($_SESSION['rol'])){
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="imprimirHorario.php">imprimir horario</a>
                 </li>
             </ul>
         </div>
