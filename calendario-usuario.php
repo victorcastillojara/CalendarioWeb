@@ -65,6 +65,7 @@ if (!isset($_SESSION['rol'])) {
   $row2 = $query2->fetch(PDO::FETCH_NUM);
   $nom = $row2[2];
   $ape = $row2[3];
+  $_SESSION['id_docente']=$row2[0];
 
   ?>
 
@@ -133,7 +134,7 @@ if (!isset($_SESSION['rol'])) {
           $("#ModalEventos").modal();
         },
 
-        events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
+        events: 'http://localhost/CalendarioWeb/eventos_docente.php',
 
 
         eventClick: function(calEvent, jsEvent, view) {
@@ -200,11 +201,7 @@ if (!isset($_SESSION['rol'])) {
         </div>
         <div class="modal-body">
 
-          <input type="hidden" id="txtID" name="txtID">
-          <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom . " " . $ape ?>">
-          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">
-          <input type="hidden" id="txtHora" value="10:30" name="txtHora" class="form-control">
+          
 
 
           <div class="form-row">
@@ -265,10 +262,16 @@ if (!isset($_SESSION['rol'])) {
             <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
           </div>
 
+          <input type="hidden" id="txtID" name="txtID">
+          <input type="hidden" id="txtFecha" name="txtFecha">
+          <input type="hidden" name="usuario" id="usuario" value=" <?php echo $nom . " " . $ape ?>">
+          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">
+          <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
+
 
         </div>
         <div class="modal-footer">
-          <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
+          <input type="submit" id="btnAgregar" class="btn btn-success">
           <!--<button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
           <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>-->
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

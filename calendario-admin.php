@@ -136,7 +136,7 @@ if (!isset($_SESSION['rol'])) {
           $("#ModalEventos").modal();
         },
 
-        events: 'http://localhost/proyecto/CalendarioWeb/eventos.php',
+        events: 'http://localhost/CalendarioWeb/eventos.php',
 
 
         eventClick: function(calEvent, jsEvent, view) {
@@ -193,7 +193,9 @@ if (!isset($_SESSION['rol'])) {
 
 
   <!-- Modal(Agregar,modificar,eliminar )-->
-  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form action="#" method="post">
+  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -204,11 +206,7 @@ if (!isset($_SESSION['rol'])) {
         </div>
         <div class="modal-body">
 
-          <input type="hidden" id="txtID" name="txtID">
-          <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom . " " . $ape ?>">
-          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>">
-          <input type="hidden" id="txtHora" value="10:30" name="txtHora" class="form-control">
+          
 
 
 
@@ -237,8 +235,8 @@ if (!isset($_SESSION['rol'])) {
               <label>Titulo evaluación</label>
               <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
             </div>
-
-
+            
+            
             <div class="form-group col-md-4">
               <!--<label>bloque</label>
               <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
@@ -257,9 +255,22 @@ if (!isset($_SESSION['rol'])) {
                   echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
                 }
                 ?>
-              </select>
-
+                <label for="bloque">Seleccione bloque</label>
+                
+                <select id="bloque" name="bloque" class="form-control">
+                <option value="0" disabled >Seleccione bloque</option>
+                    <?php
+                      $query = $mysqli -> query ("SELECT * FROM bloque");
+                      while ($valores = mysqli_fetch_array($query)) {
+                        echo '<option value="'.$valores['bloque'].'">'.$valores['bloque'].'</option>';
+                      }
+                      $bloque=$_POST['bloque'];
+                    ?>
+                </select>
+                      <input type="submit">
+                      
             </div>
+            
 
           </div>
 
@@ -272,10 +283,15 @@ if (!isset($_SESSION['rol'])) {
             <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
           </div>
 
+          <input type="hidden" id="txtID" name="txtID">
+          <input type="hidden" id="txtFecha" name="txtFecha">
+          <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom." ".$ape ?>">
+          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>"> 
+          <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
 
         </div>
         <div class="modal-footer">
-          <button type="button" id="btnAgregar" class="btn btn-success">Agregar</button>
+          <input type="submit" id="btnAgregar" class="btn btn-success">
           <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
           <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -283,6 +299,7 @@ if (!isset($_SESSION['rol'])) {
       </div>
     </div>
   </div>
+  </form>
   <script>
     var NuevoEvento;
     $('#btnAgregar').click(function() {
@@ -309,11 +326,11 @@ if (!isset($_SESSION['rol'])) {
         curso: $('#curso').val(),
         bloque: $('#bloque').val(),
         title: $('#txtTitulo').val(),
-        start: $('#txtFecha').val() + " " + $('#txtHora').val(),
+        start: $('#txtFecha').val() + " " + $('#bloque').val(),
         color: $('#txtColor').val(),
         descripcion: $('#txtDescripcion').val(),
         textColor: "#FFFFFF",
-        end: $('#txtFecha').val() + " " + $('#txtHora').val()
+        end: $('#txtFecha').val() + " " + $('#bloque').val()
       };
 
     }
@@ -357,8 +374,8 @@ if (!isset($_SESSION['rol'])) {
     }
   </script>
 </body>
-
-</html>
 <?php
-
+echo $bloque;
 ?>
+</html>
+

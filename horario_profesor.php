@@ -119,8 +119,8 @@ if (!isset($_SESSION['rol'])) {
             </tr>
             <tr>
               <th scope="row">11:30 a 12:45</th>
-              <td><?php if ($rowLunes != null && $rowLunes[2]['bloque'] == "11:30 a 12:45") echo $rowLunes[2]['curso']; ?></td>
-              <td><?php if ($rowMartes != null && $rowMartes[2]['bloque'] == "11:30 a 12:45") echo $rowMartes[2]['curso']; ?></td>
+              <td><?php if ($rowLunes != null && $rowLunes[2]['bloque'] == "11:30 a 12:45") {echo $rowLunes[2]['curso'];}else{echo 'sin curso';} ?></td>
+              <td><?php if ($rowMartes != null && $rowMartes[2]['bloque'] == "11:30 a 12:45"){ echo $rowMartes[2]['curso'];}else{echo 'sin curso';} ?></td>
               <td><?php if ($rowMiercoles != null && $rowMiercoles[2]['bloque'] == "11:30 a 12:45") echo $rowMiercoles[2]['curso']; ?></td>
               <td><?php if ($rowJueves != null && $rowJueves[2]['bloque'] == "11:30 a 12:45") echo $rowJueves[2]['curso']; ?></td>
               <td><?php if ($rowViernes != null && $rowViernes[2]['bloque'] == "11:30 a 12:45") echo $rowViernes[2]['curso']; ?></td>
