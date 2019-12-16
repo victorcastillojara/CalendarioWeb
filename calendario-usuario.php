@@ -339,7 +339,7 @@ if (!isset($_SESSION['rol'])) {
 
         },
         error: function() {
-          alert("hay un error");
+          alert("Error: Ya se ha alcanzado el límite de evaluaciones permitidas para el curso");
         }
 
       });
