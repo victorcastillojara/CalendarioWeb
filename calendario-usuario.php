@@ -37,19 +37,18 @@ if (!isset($_SESSION['rol'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/prueba.css">
 
-
-
-  <title>Calendario web Docente</title>
+  <title>Menú Docente</title>
 </head>
 
 <body>
   <header>
-    <img class="top" src="img/login.jpg">
+    <img class="top" src="img/login2.jpg">
   </header>
+
   <?php
   $usu = $_SESSION['usu'];
   $db = new Database();
@@ -65,7 +64,6 @@ if (!isset($_SESSION['rol'])) {
   $row2 = $query2->fetch(PDO::FETCH_NUM);
   $nom = $row2[2];
   $ape = $row2[3];
-  $_SESSION['id_docente']=$row2[0];
 
   ?>
 
@@ -79,12 +77,15 @@ if (!isset($_SESSION['rol'])) {
           <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="imprimirHorario.php">Imprimir horario</a>
         </li>
       </ul>
     </div>
     <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-    <a class="nav-link" href="logout.php">cerrar sesion</a>
+    <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
   </nav>
 
@@ -96,7 +97,7 @@ if (!isset($_SESSION['rol'])) {
     <div class="container">
       <div class="row">
         <div class="col"></div>
-        <div class="col-7">
+        <div class="col-7" style="background: white; margin-top:3px">
           <br><br>
           <div id="CalendarioWeb"></div>
         </div>
@@ -190,6 +191,7 @@ if (!isset($_SESSION['rol'])) {
 
 
   <!-- Modal(Agregar,modificar,eliminar )-->
+  <form action="#" method="post">
   <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -239,13 +241,14 @@ if (!isset($_SESSION['rol'])) {
 
               ?>
               <label for="bloque">Seleccione bloque</label>
-              <select id="bloque" name="boque" class="form-control">
+              <select id="bloque" name="bloque" class="form-control">
                 <option value="0">Seleccione bloque</option>
                 <?php
                 $query = $mysqli->query("SELECT * FROM bloque");
                 while ($valores = mysqli_fetch_array($query)) {
                   echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
                 }
+                $bloque=$_POST['bloque'];
                 ?>
               </select>
 
@@ -279,6 +282,7 @@ if (!isset($_SESSION['rol'])) {
       </div>
     </div>
   </div>
+  </form>
   <script>
     var NuevoEvento;
     $('#btnAgregar').click(function() {
@@ -305,11 +309,11 @@ if (!isset($_SESSION['rol'])) {
         curso: $('#curso').val(),
         bloque: $('#bloque').val(),
         title: $('#txtTitulo').val(),
-        start: $('#txtFecha').val() + " " + $('#txtHora').val(),
+        start: $('#txtFecha').val() + " " + $('#bloque').val(),
         color: $('#txtColor').val(),
         descripcion: $('#txtDescripcion').val(),
         textColor: "#FFFFFF",
-        end: $('#txtFecha').val() + " " + $('#txtHora').val()
+        end: $('#txtFecha').val() + " " + $('#bloque').val()
       };
 
     }
@@ -319,7 +323,7 @@ if (!isset($_SESSION['rol'])) {
       $.ajax({
 
         type: 'POST',
-        url: 'eventos.php?accion=' + accion,
+        url: 'eventos_docente.php?accion=' + accion,
         data: objEvento,
         success: function(msg) {
           if (msg) {
@@ -336,7 +340,7 @@ if (!isset($_SESSION['rol'])) {
 
         },
         error: function() {
-          alert("hay un error");
+          alert("Error: Ya se ha alcanzado el límite de evaluaciones permitidas para el curso");
         }
 
       });

@@ -24,7 +24,7 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/prueba.css"> 
@@ -65,7 +65,7 @@ if (!isset($_SESSION['rol'])) {
                     <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['rol'])) {
             </ul>
         </div>
         <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 
@@ -89,16 +89,16 @@ if (!isset($_SESSION['rol'])) {
     <secton>
     <div align="center" style="margin-top: 30px;">
     <table class="table table-striped table-dark tabla1">
-  <thead>
-    <th>id</th>
-    <th>rut</th>
-    <th>nombre</th>
-    <th>apellido</th>
-    <th>telefono</th>
-    <th>direccion</th>
-    <th>correo</th>
-    <th>id usuario</th>
-    <th><a href="registro-docente.php"><button style="width: 150px; height: 57px;" class="btn btn-info"> Registrar datos nuevos</button></a></th>
+    <thead>
+    <th>ID</th>
+    <th>RUT</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Teléfono</th>
+    <th>Dirección</th>
+    <th>Correo</th>
+    <th>ID_USUARIO</th>
+    <th><a href="registro-docente.php"><button class='btn btn-info' style="width: 200px; height:50px">Registrar datos nuevos</button></a></th>
     </thead>
     
 

@@ -46,7 +46,7 @@ function ConsultarDocente($id_docente_mod){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/prueba.css"> 
@@ -101,7 +101,7 @@ function ConsultarDocente($id_docente_mod){
             </ul>
         </div>
         <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
 
@@ -136,14 +136,14 @@ function ConsultarDocente($id_docente_mod){
                             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="<?php echo $consulta[2] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="telefono">Telefono</label>
+                            <label for="telefono">Teléfono</label>
                             <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" value="<?php echo $consulta[3] ?>">
                         </div>
                     </div>
 
                     <div class="form-row">
                     <div class="form-group col-md-3">
-                            <label for="direccion">Direccion</label>
+                            <label for="direccion">Dirección</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion" value="<?php echo $consulta[4] ?>">
                         </div>
                         <div class="form-group col-md-3">

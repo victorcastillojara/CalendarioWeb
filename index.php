@@ -65,7 +65,7 @@ if(isset($_POST['correo']) && isset($_POST['password'])){
     
     <script src="https://kit.fontawesome.com/01c2cd0a1f.js" crossorigin="anonymous"></script>
 
-    <title>Inicio de sesion</title>
+    <title>Inicio de sesión</title>
 </head>
 
 

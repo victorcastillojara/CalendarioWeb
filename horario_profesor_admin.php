@@ -26,12 +26,12 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/prueba.css">
     <link rel="stylesheet" href="css/estilo-img.css">
 
-    <title>Menu Administrador</title>
+    <title>Menú Administrador</title>
 </head>
 
 <body>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['rol'])) {
                     <a class="nav-link" href="horario_profesor_admin.php">Horario Docente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluacion</a>
+                    <a class="nav-link" href="calendario-admin.php">Agendar Evaluación</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="lista_docente.php">Docentes</a>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['rol'])) {
             </ul>
         </div>
         <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-        <a class="nav-link" href="logout.php">Cerrar sesion</a>
+        <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
     
@@ -108,19 +108,19 @@ if (!isset($_SESSION['rol'])) {
                     $docente = $_POST['horarioProfesor'];
                     ?>
                 </select>
-                <input type="submit" value="Buscar">
+                <input type="submit" value="Buscar" class="btn btn-primary">
             </form>
 
             <h1><strong>Horario profesor</strong></h1>
 
             <div style="margin-left:60px;margin-right:60px;">
-                <table class="table table-bordered">
+                <table class="table table-striped table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Bloque</th>
                             <th scope="col">Lunes</th>
                             <th scope="col">Martes</th>
-                            <th scope="col">Miercoles</th>
+                            <th scope="col">Miércoles</th>
                             <th scope="col">Jueves</th>
                             <th scope="col">Viernes</th>
                         </tr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2019 a las 03:29:58
+-- Tiempo de generación: 16-12-2019 a las 04:12:00
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -63,7 +63,7 @@ CREATE TABLE `curso` (
 
 INSERT INTO `curso` (`id_curso`, `curso`, `nivel`, `cant_alumnos`) VALUES
 (1, 'Sin Curso', 'null', 0),
-(2, 'Primero A', 'Básico', 0),
+(2, 'Primero A', 'Básico', 20),
 (3, 'Primero B', 'Básico', 0),
 (4, 'Segundo A', 'Básico', 0),
 (5, 'Segundo B', 'Básico', 0),
@@ -127,13 +127,6 @@ CREATE TABLE `docente` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `docente`
---
-
-INSERT INTO `docente` (`id_docente`, `rut`, `nombre`, `apellido`, `telefono`, `direccion`, `correo`, `id_usuario`) VALUES
-(1, 'null', 'Sin', 'Profesor', 0, 'null', 'null', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -192,13 +185,6 @@ CREATE TABLE `informaciones` (
   `descripcion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `informaciones`
---
-
-INSERT INTO `informaciones` (`id_informacion`, `titulo`, `descripcion`) VALUES
-(1, 'Título', 'Descripción');
-
 -- --------------------------------------------------------
 
 --
@@ -223,20 +209,20 @@ INSERT INTO `ramo` (`id_ramo`, `ramo`) VALUES
 (6, 'Biología'),
 (7, 'Física'),
 (8, 'Química'),
-(9, 'Ciencias Naturales'),
+(9, 'Cs. Naturales'),
 (10, 'Artes Visuales'),
 (11, 'Artística'),
 (12, 'Tecnología'),
 (13, 'Música'),
-(14, 'Educación Física'),
+(14, 'Ed. Física'),
 (15, 'Religión'),
-(16, 'Diferenciado de Lenguaje'),
-(17, 'Diferenciado de Matemática'),
-(18, 'Diferenciado de Educación Física'),
-(19, 'Ciencias para la ciudadanía'),
+(16, 'Dif. de Lenguaje'),
+(17, 'Dif. de Matemática'),
+(18, 'Dif. de Ed. Física'),
+(19, 'Cs. para la ciudadanía'),
 (20, 'Formación cuidadana'),
-(21, 'Diferenciado de Historia'),
-(22, 'Diferenciado de Ciencias'),
+(21, 'Dif. de Historia'),
+(22, 'Dif. de Ciencias'),
 (23, 'Vida saludable'),
 (24, 'Manejo'),
 (25, 'Análisis Físico Químico'),
@@ -246,7 +232,7 @@ INSERT INTO `ramo` (`id_ramo`, `ramo`) VALUES
 (29, 'Medio ambiente'),
 (30, 'Toma de muestras'),
 (31, 'Mantenimiento'),
-(32, 'Preparación de muestras'),
+(32, 'Prep. de muestras'),
 (33, 'Análisis instrumental'),
 (34, 'Técnicas de laboratorio'),
 (35, 'Taller de Lenguaje'),
@@ -290,13 +276,6 @@ CREATE TABLE `usuario` (
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `correo`, `password`, `id_rol`) VALUES
-(1, 'admin', 'AdministradorCJC', 1);
 
 --
 -- Índices para tablas volcadas
@@ -401,7 +380,7 @@ ALTER TABLE `dia`
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -419,7 +398,7 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `informaciones`
 --
 ALTER TABLE `informaciones`
-  MODIFY `id_informacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_informacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ramo`
@@ -437,7 +416,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

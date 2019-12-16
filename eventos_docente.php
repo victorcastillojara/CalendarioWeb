@@ -1,7 +1,7 @@
 <?php
 session_start();    
 
-
+$id=$_SESSION['id_docente'];
 
 header('Content-Type: application/json');
 
@@ -18,6 +18,7 @@ switch($accion){
 
     $fecha=$_POST['start'];
     $curso=$_POST['curso'];
+    $docente=$_POST['id_usuario'];
 
     $delimiter = array(" ");
     $replace = str_replace($delimiter, $delimiter[0], $fecha);
@@ -26,27 +27,50 @@ switch($accion){
     $query = $mysqli->query('SELECT * FROM eventos WHERE curso="'.$curso.'" AND start LIKE "'.$explode[0].'%"');
     $resultado1=$query->num_rows;
 
-    if($resultado1<2){
+    if($id==4){
+        $SentenciaSQL=$pdo->prepare("INSERT INTO eventos(id_usuario,usuario,curso,bloque,title,descripcion,color,textColor,start,end)
+        VALUES(:id_usuario,:usuario,:curso,:bloque,:title,:descripcion,:color,:textColor,:start,:end)");
+    
+        $respuesta=$SentenciaSQL->execute(array(
+            "id_usuario"=>$_POST['id_usuario'],
+            "usuario"=>$_POST['usuario'],
+            "curso"=>$_POST['curso'],
+            "bloque"=>$_POST['bloque'],
+            "title"=>$_POST['title'],
+            "descripcion"=>$_POST['descripcion'],
+            "color"=>$_POST['color'],
+            "textColor"=>$_POST['textColor'],
+            "start"=>$_POST['start'],
+            "end"=>$_POST['end']
+    
+        ));
+    
+        echo json_encode($respuesta);
+    }else{
+        if($resultado1<2){
 
-    $SentenciaSQL=$pdo->prepare("INSERT INTO eventos(id_usuario,usuario,curso,bloque,title,descripcion,color,textColor,start,end)
-    VALUES(:id_usuario,:usuario,:curso,:bloque,:title,:descripcion,:color,:textColor,:start,:end)");
-
-    $respuesta=$SentenciaSQL->execute(array(
-        "id_usuario"=>$_POST['id_usuario'],
-        "usuario"=>$_POST['usuario'],
-        "curso"=>$_POST['curso'],
-        "bloque"=>$_POST['bloque'],
-        "title"=>$_POST['title'],
-        "descripcion"=>$_POST['descripcion'],
-        "color"=>$_POST['color'],
-        "textColor"=>$_POST['textColor'],
-        "start"=>$_POST['start'],
-        "end"=>$_POST['end']
-
-    ));
-
-    echo json_encode($respuesta);
+            $SentenciaSQL=$pdo->prepare("INSERT INTO eventos(id_usuario,usuario,curso,bloque,title,descripcion,color,textColor,start,end)
+            VALUES(:id_usuario,:usuario,:curso,:bloque,:title,:descripcion,:color,:textColor,:start,:end)");
+        
+            $respuesta=$SentenciaSQL->execute(array(
+                "id_usuario"=>$_POST['id_usuario'],
+                "usuario"=>$_POST['usuario'],
+                "curso"=>$_POST['curso'],
+                "bloque"=>$_POST['bloque'],
+                "title"=>$_POST['title'],
+                "descripcion"=>$_POST['descripcion'],
+                "color"=>$_POST['color'],
+                "textColor"=>$_POST['textColor'],
+                "start"=>$_POST['start'],
+                "end"=>$_POST['end']
+        
+            ));
+        
+            echo json_encode($respuesta);
+            }
     }
+
+    
     break;
     case 'eliminar':
     //intstrucciones de eliminar
@@ -99,12 +123,8 @@ echo json_encode($respuesta);
 
     default:
     //seleccionar los eventos del calendadrio
-    
-    $id=$_SESSION['id_docente'];
-
 
 $SentenciaSQL=$pdo->prepare("SELECT * FROM eventos WHERE id_usuario=:id");
-
 
 $SentenciaSQL->execute(array("id"=>$id));
 
@@ -114,6 +134,3 @@ echo json_encode($resultado);
 
     break;
 }
-
-
-?>

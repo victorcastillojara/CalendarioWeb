@@ -26,57 +26,63 @@ if(!isset($_SESSION['rol'])){
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
-    <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/prueba.css">
+
+  <title>Menú Docente</title>
 </head>
+
 <body>
-    <header>    
-        <img class="top" src="img/login.jpg">
-    </header>
-    <section>
-    <?php
-    $usu=$_SESSION['usu'];
-    $db=new Database();
-    $query1=$db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
-    $query1->execute(['usu'=>$usu]);
+  <header>
+    <img class="top" src="img/login2.jpg">
+  </header>
 
-    $row1=$query1->fetch(PDO::FETCH_NUM);
-    $rol1=$row1[0];
+  <?php
+  $usu = $_SESSION['usu'];
+  $db = new Database();
+  $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
+  $query1->execute(['usu' => $usu]);
 
-    $query2=$db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
-    $query2->execute(['rol1'=>$rol1]);
+  $row1 = $query1->fetch(PDO::FETCH_NUM);
+  $rol1 = $row1[0];
 
-    $row2=$query2->fetch(PDO::FETCH_NUM);
-    $nom=$row2[2];
-    $ape=$row2[3];
-    
-    ?>
+  $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
+  $query2->execute(['rol1' => $rol1]);
 
-    <nav class="navbar navbar-light " style="background-color: #7BA8FF ;">
-        <div class="navegacion">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="menu-usuario.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="imprimirHorario.php">imprimir horario</a>
-                </li>
-            </ul>
-        </div>
-        <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom." ".$ape ?></h5>
-        <a class="nav-link" href="logout.php">cerrar sesion</a>
+  $row2 = $query2->fetch(PDO::FETCH_NUM);
+  $nom = $row2[2];
+  $ape = $row2[3];
 
-    </nav>
+  ?>
+
+  <nav class="navbar navbar-light " style="background-color: #7BA8FF ;">
+    <div class="navegacion">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="menu-usuario.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="imprimirHorario.php">Imprimir horario</a>
+        </li>
+      </ul>
+    </div>
+    <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+    <a class="nav-link" href="logout.php">Cerrar sesión</a>
+
+  </nav>
         <div align="center" style="margin-top:30px;">
 
-            <h1>Informacion</h1>
+            <h1>
+                <u>Información</u>
+            </h1>
 
             <?php
 

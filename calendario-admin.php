@@ -41,6 +41,7 @@ if (!isset($_SESSION['rol'])) {
   <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/prueba.css">
 
 
   <title>Calendario web</title>
@@ -95,12 +96,12 @@ if (!isset($_SESSION['rol'])) {
 
   </nav>
 
-  <section>
+  <section style="margin-top: 5px">
 
     <div class="container">
       <div class="row">
         <div class="col"></div>
-        <div class="col-7">
+        <div class="col-7" style="background: white">
           <br><br>
           <div id="CalendarioWeb"></div>
         </div>
@@ -190,115 +191,119 @@ if (!isset($_SESSION['rol'])) {
 
     })
   </script>
-
-
   <!-- Modal(Agregar,modificar,eliminar )-->
   <form action="#" method="post">
-  <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="tituloEvento"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+    <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloEvento"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-          
-
-
-
-          <div class="form-row">
-
-            <div class="form-group col-md-5">
-              <?php
-              include "conexion.php";
-
-              $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-
-              ?>
-              <label for="curso">Seleccione curso</label>
-              <select id="curso" name="curso" class="form-control">
-                <option value="0" disabled>Seleccione curso</option>
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <?php
-                $query = $mysqli->query("SELECT * FROM curso");
-                while ($valores = mysqli_fetch_array($query)) {
-                  echo '<option value="' . $valores['curso'] . ' ' . $valores['nivel'] . '">' . $valores['curso'] . ' ' . $valores['nivel'] . '</option>';
-                }
+                include "conexion.php";
+
+                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
                 ?>
-              </select>
-            </div>
+                <label for="docente">Seleccione docente</label>
+                <select id="docente" name="docente" class="form-control">
+                  <option value="0">Seleccione docente:</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM docente");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['id_docente'] . '">' . $valores['nombre'] . ' ' . $valores['apellido'] . '</option>';
+                  }
+                  $id=$_POST['docente'];
+                  ?>
+                </select>
+              </div>
 
-            <div class="form-group col-md-8">
-              <label>Titulo evaluación</label>
-              <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
-            </div>
-            
-            
-            <div class="form-group col-md-4">
-              <!--<label>bloque</label>
-              <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
+              <div class="form-group col-md-6">
               <?php
               include "conexion.php";
 
               $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
               ?>
-              <label for="bloque">Seleccione bloque</label>
-              <select id="bloque" name="boque" class="form-control">
-                <option value="0" disabled>Seleccione bloque</option>
+                <label for="curso">Seleccione curso</label>
+                <select id="curso" name="curso" class="form-control">
+                  <option value="0" disabled>Seleccione curso</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM curso");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['curso'] . ' ' . $valores['nivel'] . '">' . $valores['curso'] . ' ' . $valores['nivel'] . '</option>';
+                  }
+                  ?>
+                </select>
+              </div>
+
+              <div class="form-group col-md-8">
+                <label>Título evaluación</label>
+                <input type="text" id="txtTitulo" name="txtTitulo" class="form-control" placeholder="Titulo evalaucion">
+              </div>
+
+
+              <div class="form-group col-md-4">
+                <!--<label>bloque</label>
+              <input type="text" id="bloque" value="" name="bloque" class="form-control">-->
                 <?php
-                $query = $mysqli->query("SELECT * FROM bloque");
-                while ($valores = mysqli_fetch_array($query)) {
-                  echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
-                }
+                include "conexion.php";
+
+                $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
                 ?>
                 <label for="bloque">Seleccione bloque</label>
-                
+
                 <select id="bloque" name="bloque" class="form-control">
-                <option value="0" disabled >Seleccione bloque</option>
-                    <?php
-                      $query = $mysqli -> query ("SELECT * FROM bloque");
-                      while ($valores = mysqli_fetch_array($query)) {
-                        echo '<option value="'.$valores['bloque'].'">'.$valores['bloque'].'</option>';
-                      }
-                      $bloque=$_POST['bloque'];
-                    ?>
+                  <option value="0" disabled>Seleccione bloque</option>
+                  <?php
+                  $query = $mysqli->query("SELECT * FROM bloque");
+                  while ($valores = mysqli_fetch_array($query)) {
+                    echo '<option value="' . $valores['bloque'] . '">' . $valores['bloque'] . '</option>';
+                  }
+                  $bloque = $_POST['bloque'];
+                  ?>
                 </select>
-                      <input type="submit">
-                      
+
+                <!-- <input type="submit"> -->
+
+              </div>
+
+
             </div>
-            
+
+            <div class="form-group">
+              <label>Descripción evaluación</label>
+              <textarea name="txtDescripcion" id="txtDescripcion" rows="3" class="form-control"></textarea>
+            </div>
+            <div form-group>
+              <label>Color</label>
+              <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
+            </div>
+
+            <input type="hidden" id="txtID" name="txtID">
+            <input type="hidden" id="txtFecha" name="txtFecha">
+            <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom . " " . $ape ?>">
+            <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $id ?>">
+            <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
 
           </div>
-
-          <div class="form-group">
-            <label>Descripcion evaluacion</label>
-            <textarea name="txtDescripcion" id="txtDescripcion" rows="3" class="form-control"></textarea>
+          <div class="modal-footer">
+            <button type="submit" id="btnAgregar" class="btn btn-success">Agregar</button>
+            <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
+            <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           </div>
-          <div form-group>
-            <label>Color</label>
-            <input type="color" id="txtColor" value="#ff0000" name="txtColor" class="form-control">
-          </div>
-
-          <input type="hidden" id="txtID" name="txtID">
-          <input type="hidden" id="txtFecha" name="txtFecha">
-          <input type="hidden" name="usuario" id="usuario" value="<?php echo $nom." ".$ape ?>">
-          <input type="hidden" name="id_usuario" id="id_usuario" value=" <?php echo $rol1 ?>"> 
-          <input type="hidden" id="txtHora" value="<?php echo $bloque; ?>" name="txtHora" class="form-control">
-
-        </div>
-        <div class="modal-footer">
-          <input type="submit" id="btnAgregar" class="btn btn-success">
-          <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
-          <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <script>
     var NuevoEvento;
@@ -321,7 +326,7 @@ if (!isset($_SESSION['rol'])) {
     function RecolectarDatosGUI() {
       NuevoEvento = {
         id: $('#txtID').val(),
-        id_usuario: $('#id_usuario').val(),
+        id_usuario: $('#docente').val(),
         usuario: $('#usuario').val(),
         curso: $('#curso').val(),
         bloque: $('#bloque').val(),
@@ -357,7 +362,7 @@ if (!isset($_SESSION['rol'])) {
 
         },
         error: function() {
-          alert("hay un error");
+          alert("Error: Ya se ha alcanzado el límite de evaluaciones permitidas para el curso");
         }
 
       });
@@ -377,5 +382,5 @@ if (!isset($_SESSION['rol'])) {
 <?php
 echo $bloque;
 ?>
-</html>
 
+</html>
