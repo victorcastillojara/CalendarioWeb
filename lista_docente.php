@@ -24,7 +24,7 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/prueba.css"> 
@@ -78,7 +78,7 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
@@ -88,7 +88,7 @@ if (!isset($_SESSION['rol'])) {
 
     <secton>
     <div align="center" style="margin-top: 30px;">
-    <table border="2">
+    <table class="table table-striped table-dark tabla1">
     <thead>
     <th>ID</th>
     <th>RUT</th>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['rol'])) {
     <th>Dirección</th>
     <th>Correo</th>
     <th>ID_USUARIO</th>
-    <th><a href="registro-docente.php"><button>Registrar datos nuevos</button></a></th>
+    <th><a href="registro-docente.php"><button class='btn btn-info' style="width: 200px; height:50px">Registrar datos nuevos</button></a></th>
     </thead>
     
 

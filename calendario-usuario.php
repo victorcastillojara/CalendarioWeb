@@ -37,19 +37,18 @@ if (!isset($_SESSION['rol'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="css/estilo_dias.css">
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
+  <link rel="stylesheet" href="css/prueba.css">
 
-
-
-  <title>Calendario web Docente</title>
+  <title>Menú Docente</title>
 </head>
 
 <body>
   <header>
-    <img class="top" src="img/login.jpg">
+    <img class="top" src="img/login2.jpg">
   </header>
+
   <?php
   $usu = $_SESSION['usu'];
   $db = new Database();
@@ -65,7 +64,6 @@ if (!isset($_SESSION['rol'])) {
   $row2 = $query2->fetch(PDO::FETCH_NUM);
   $nom = $row2[2];
   $ape = $row2[3];
-  $_SESSION['id_docente']=$row2[0];
 
   ?>
 
@@ -79,12 +77,15 @@ if (!isset($_SESSION['rol'])) {
           <a class="nav-link" href="horario_profesor.php">Mi Horario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluacion</a>
+          <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="imprimirHorario.php">Imprimir horario</a>
         </li>
       </ul>
     </div>
     <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
-    <a class="nav-link" href="logout.php">cerrar sesion</a>
+    <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
   </nav>
 
@@ -96,7 +97,7 @@ if (!isset($_SESSION['rol'])) {
     <div class="container">
       <div class="row">
         <div class="col"></div>
-        <div class="col-7">
+        <div class="col-7" style="background: white; margin-top:3px">
           <br><br>
           <div id="CalendarioWeb"></div>
         </div>

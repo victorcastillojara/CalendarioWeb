@@ -54,7 +54,7 @@ function ConsultarCurso($id_curso_mod){
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php

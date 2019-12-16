@@ -26,7 +26,7 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/prueba.css">
     <link rel="stylesheet" href="css/estilo-img.css">
@@ -80,7 +80,7 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>
@@ -108,13 +108,13 @@ if (!isset($_SESSION['rol'])) {
                     $docente = $_POST['horarioProfesor'];
                     ?>
                 </select>
-                <input type="submit" value="Buscar">
+                <input type="submit" value="Buscar" class="btn btn-primary">
             </form>
 
             <h1><strong>Horario profesor</strong></h1>
 
             <div style="margin-left:60px;margin-right:60px;">
-                <table class="table table-bordered">
+                <table class="table table-striped table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Bloque</th>
