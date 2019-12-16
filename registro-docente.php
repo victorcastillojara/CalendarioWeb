@@ -22,7 +22,7 @@ if (!isset($_SESSION['rol'])) {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="css/menu.css">
+
     <link rel="stylesheet" href="css/estilo-nav.css">
     <link rel="stylesheet" href="css/estilo-img.css">
     <link rel="stylesheet" href="css/prueba.css">
@@ -33,7 +33,7 @@ if (!isset($_SESSION['rol'])) {
 
 <body>
     <header>
-        <img class="top" src="img/login.jpg">
+        <img class="top" src="img/login2.jpg">
     </header>
 
     <?php
@@ -76,7 +76,7 @@ if (!isset($_SESSION['rol'])) {
                 </li>
             </ul>
         </div>
-        <h5 style="margin-left:45%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
+        <h5 style="margin-left:40%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
         <a class="nav-link" href="logout.php">Cerrar sesión</a>
 
     </nav>

@@ -27,7 +27,7 @@ if (!isset($_SESSION['rol'])) {
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="css/menu.css">
+
   <link rel="stylesheet" href="css/estilo-nav.css">
   <link rel="stylesheet" href="css/estilo-img.css">
   <link rel="stylesheet" href="css/prueba.css">
@@ -36,9 +36,8 @@ if (!isset($_SESSION['rol'])) {
 </head>
 
 <body>
-  <!-- horario vista profesor version Carlos-->
   <header>
-    <img class="top" src="img/login.jpg">
+    <img class="top" src="img/login2.jpg">
   </header>
 
   <?php
@@ -71,6 +70,9 @@ if (!isset($_SESSION['rol'])) {
         <li class="nav-item">
           <a class="nav-link" href="calendario-usuario.php">Agendar Evaluación</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="imprimirHorario.php">Imprimir horario</a>
+        </li>
       </ul>
     </div>
     <h5 style="margin-left:50%; margin-top:7px;">Bienvenido: <?php echo $nom . " " . $ape ?></h5>
@@ -84,7 +86,7 @@ if (!isset($_SESSION['rol'])) {
       <h1><strong>Mi horario</strong></h1>
 
       <div style="margin-left:60px;margin-right:60px;">
-        <table class="table table-bordered" style="border: black">
+        <table class="table table-striped table-dark">
           <thead>
             <tr>
               <th scope="col">Bloque</th>
@@ -120,7 +122,7 @@ if (!isset($_SESSION['rol'])) {
             <tr>
               <th scope="row">11:30 a 12:45</th>
               <td><?php if ($rowLunes != null && $rowLunes[2]['bloque'] == "11:30 a 12:45") echo $rowLunes[2]['curso']; ?></td>
-              <td><?php if ($rowMartes != null && $rowMartes[2]['bloque'] == "11:30 a 12:45")echo $rowMartes[2]['curso']; ?></td>
+              <td><?php if ($rowMartes != null && $rowMartes[2]['bloque'] == "11:30 a 12:45") echo $rowMartes[2]['curso']; ?></td>
               <td><?php if ($rowMiercoles != null && $rowMiercoles[2]['bloque'] == "11:30 a 12:45") echo $rowMiercoles[2]['curso']; ?></td>
               <td><?php if ($rowJueves != null && $rowJueves[2]['bloque'] == "11:30 a 12:45") echo $rowJueves[2]['curso']; ?></td>
               <td><?php if ($rowViernes != null && $rowViernes[2]['bloque'] == "11:30 a 12:45") echo $rowViernes[2]['curso']; ?></td>

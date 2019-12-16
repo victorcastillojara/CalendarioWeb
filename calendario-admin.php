@@ -271,7 +271,8 @@ if (!isset($_SESSION['rol'])) {
                   $bloque = $_POST['bloque'];
                   ?>
                 </select>
-                <input type="submit">
+
+                <!-- <input type="submit"> -->
 
               </div>
 
@@ -295,7 +296,7 @@ if (!isset($_SESSION['rol'])) {
 
           </div>
           <div class="modal-footer">
-            <input type="submit" id="btnAgregar" class="btn btn-success">
+            <button type="submit" id="btnAgregar" class="btn btn-success">Agregar</button>
             <button type="button" id="btnModificar" class="btn btn-success">Modificar</button>
             <button type="button" id="btnEliminar" class="btn btn-danger">Borrar</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
