@@ -64,6 +64,7 @@ if (!isset($_SESSION['rol'])) {
   $row2 = $query2->fetch(PDO::FETCH_NUM);
   $nom = $row2[2];
   $ape = $row2[3];
+  $_SESSION['id_docente']=$row2[0];
 
   ?>
 
