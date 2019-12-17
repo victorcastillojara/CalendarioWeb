@@ -51,6 +51,7 @@ if (!isset($_SESSION['rol'])) {
 
   <?php
   $usu = $_SESSION['usu'];
+  
   $db = new Database();
   $query1 = $db->connect()->prepare('SELECT * FROM usuario WHERE id_usuario=:usu');
   $query1->execute(['usu' => $usu]);
@@ -60,6 +61,7 @@ if (!isset($_SESSION['rol'])) {
 
   $query2 = $db->connect()->prepare('SELECT * FROM docente WHERE id_usuario=:rol1');
   $query2->execute(['rol1' => $rol1]);
+ 
 
   $row2 = $query2->fetch(PDO::FETCH_NUM);
   $nom = $row2[2];
